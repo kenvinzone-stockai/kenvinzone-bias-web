@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowText">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      @keyframes breathe{0%,100%{opacity:.45}50%{opacity:1}}
+      @keyframes sweep{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+      @keyframes blip{0%,100%{opacity:.5;r:2}50%{opacity:1;r:3}}
+      .oct-outer{animation:breathe 3s ease-in-out infinite}
+      .radar-line{animation:sweep 4s linear infinite;transform-origin:60px 60px}
+      .blip-dot{animation:blip 2s ease-in-out infinite}
+    </style>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="#0a0f1a"/>
+  <!-- Octagon grid -->
+  <polygon points="60,10 93,23 106,57 93,91 60,106 27,91 14,57 27,23" fill="none" stroke="rgba(56,189,248,0.12)" stroke-width="0.8"/>
+  <polygon points="60,25 82,34 90,57 82,80 60,90 38,80 30,57 38,34" fill="none" stroke="rgba(56,189,248,0.08)" stroke-width="0.6"/>
+  <polygon points="60,40 72,45 76,57 72,69 60,74 48,69 44,57 48,45" fill="none" stroke="rgba(56,189,248,0.06)" stroke-width="0.5"/>
+  <polygon class="oct-outer" points="60,10 93,23 106,57 93,91 60,106 27,91 14,57 27,23" fill="none" stroke="#38bdf8" stroke-width="2" filter="url(#glow)"/>
+  <!-- Crosshair -->
+  <line x1="60" y1="10" x2="60" y2="106" stroke="rgba(56,189,248,0.07)" stroke-width="0.5"/>
+  <line x1="14" y1="57" x2="106" y2="57" stroke="rgba(56,189,248,0.07)" stroke-width="0.5"/>
+  <!-- Sweep -->
+  <line class="radar-line" x1="60" y1="60" x2="60" y2="12" stroke="#38bdf8" stroke-width="1.5" opacity="0.55" stroke-linecap="round"/>
+  <!-- Blips -->
+  <circle class="blip-dot" cx="80" cy="32" r="2.5" fill="#f59e0b" style="animation-delay:0s"/>
+  <circle class="blip-dot" cx="30" cy="82" r="2.5" fill="#10b981" style="animation-delay:0.7s"/>
+  <circle class="blip-dot" cx="90" cy="72" r="2.5" fill="#ef4444" style="animation-delay:1.4s"/>
+  <circle cx="60" cy="60" r="3" fill="#38bdf8" opacity="0.8"/>
+
+  <!-- CANDLESTICK W-BOTTOM centered around y~50, shifted down 8px -->
+  <line x1="33" y1="48" x2="33" y2="60" stroke="#22c55e" stroke-width="0.8"/>
+  <rect x="31" y="50" width="4" height="6" fill="#22c55e"/>
+  <line x1="40" y1="54" x2="40" y2="68" stroke="#ef4444" stroke-width="0.8"/>
+  <rect x="38" y="56" width="4" height="8" fill="#ef4444"/>
+  <line x1="47" y1="56" x2="47" y2="70" stroke="#22c55e" stroke-width="0.8"/>
+  <rect x="45" y="60" width="4" height="7" fill="#22c55e"/>
+  <line x1="54" y1="46" x2="54" y2="60" stroke="#ef4444" stroke-width="0.8"/>
+  <rect x="52" y="48" width="4" height="7" fill="#ef4444"/>
+  <line x1="61" y1="42" x2="61" y2="56" stroke="#22c55e" stroke-width="0.8"/>
+  <rect x="59" y="44" width="4" height="8" fill="#22c55e"/>
+  <line x1="68" y1="52" x2="68" y2="68" stroke="#ef4444" stroke-width="0.8"/>
+  <rect x="66" y="54" width="4" height="10" fill="#ef4444"/>
+  <line x1="75" y1="46" x2="75" y2="66" stroke="#22c55e" stroke-width="0.8"/>
+  <rect x="73" y="50" width="4" height="12" fill="#22c55e"/>
+  <line x1="82" y1="34" x2="82" y2="52" stroke="#22c55e" stroke-width="0.8"/>
+  <rect x="80" y="36" width="4" height="14" fill="#22c55e"/>
+  <line x1="89" y1="30" x2="89" y2="44" stroke="#f59e0b" stroke-width="0.8"/>
+  <rect x="87" y="32" width="4" height="8" fill="#f59e0b"/>
+  <polyline points="33,53 40,60 47,63 54,51 61,48 68,59 75,54 82,40 89,35" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2,2" opacity="0.35"/>
+
+  <text x="60" y="86" text-anchor="middle" dominant-baseline="central" font-family="'SF Mono','Fira Code','Courier New',monospace" font-size="22" font-weight="900" fill="#38bdf8" filter="url(#glowText)">KZ</text>
+</svg>

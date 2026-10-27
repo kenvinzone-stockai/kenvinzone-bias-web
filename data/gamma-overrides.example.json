@@ -1,0 +1,11 @@
+{
+  "_readme": "Copy to gamma-overrides.json and fill in levels from the weekly deck when MBP has no option snapshot. Units = ETF underlying (GLD/SPY/QQQ), NOT spot XAUUSD. Delete an asset key to fall back to the engine.",
+  "GOLD": {
+    "asOf": "2026-10-23",
+    "spot": 0,
+    "putWall": 0,
+    "callWall": 0,
+    "gammaFlip": 0,
+    "netGex": null
+  }
+}

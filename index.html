@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Market Bias Terminal · KenvinZone</title>
+  <meta name="description" content="Điểm Market Bias định lượng (-100 → +100) cho Vàng, S&P 500, Nasdaq 100 — cập nhật mỗi ngày từ dữ liệu FRED, CFTC, SPDR.">
+  <meta name="theme-color" content="#020617">
+  <meta property="og:title" content="Market Bias Terminal · KenvinZone">
+  <meta property="og:description" content="La bàn vĩ mô định lượng cho trader: điểm Bias, Regime, biên Gamma và bảng tác chiến AURORA.">
+  <meta property="og:url" content="https://bias.kenvinzone.com/">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="assets/logo-kenvinzone.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css?v=20261027-v4">
+  <script>
+    (function(){try{var s=localStorage.getItem("kz-theme");if(s){document.documentElement.setAttribute("data-theme",s);}}catch(_){}})();
+  </script>
+  <script src="assets/app.js?v=20261027-v4" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="https://kenvinzone.com" target="_blank" rel="noopener">
+        <img class="brand-logo" src="assets/logo-kenvinzone.svg" alt="KZ" width="34" height="34" />
+        <div class="brand-text">
+          <div class="brand-name">KENVINZONE</div>
+          <div class="brand-sub">MARKET BIAS TERMINAL</div>
+        </div>
+      </a>
+      <div class="topbar-right">
+        <div class="status" id="status">
+          <span class="pulse" aria-hidden="true"></span>
+          <span id="status-text">Đang tải dữ liệu…</span>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Đổi giao diện sáng/tối" title="Đổi giao diện sáng/tối">
+          <svg class="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell">
+    <nav class="asset-tabs" role="tablist" aria-label="Chọn tài sản" id="asset-tabs"></nav>
+
+    <main class="grid">
+      <!-- ZONE 1 — Bias gauge & regime -->
+      <section class="card hero zone-gauge" aria-labelledby="z1-title">
+        <div class="card-head">
+          <h2 id="z1-title">01 · Market Bias <span class="h-sub">· <span id="tf-label">Tuần</span></span></h2>
+          <div class="seg" role="tablist" aria-label="Khung thời gian">
+            <button role="tab" data-tf="weekly" aria-selected="true">Tuần</button>
+            <button role="tab" data-tf="daily" aria-selected="false">Ngày</button>
+          </div>
+        </div>
+
+        <div class="gauge-wrap">
+          <svg class="gauge" id="gauge" viewBox="0 0 320 190" role="img" aria-labelledby="gauge-desc">
+            <desc id="gauge-desc">Đồng hồ điểm Market Bias từ -100 đến +100</desc>
+            <g id="gauge-bands"></g>
+            <g id="gauge-ticks"></g>
+            <g id="gauge-needle" class="needle">
+              <line x1="160" y1="160" x2="160" y2="42"></line>
+              <circle cx="160" cy="160" r="7"></circle>
+            </g>
+          </svg>
+          <div class="gauge-readout">
+            <div class="score" id="score">—</div>
+            <div class="scale-note">chuẩn hóa trên thang −100 → +100</div>
+            <div class="regime-pill" id="regime-pill">—</div>
+          </div>
+        </div>
+
+        <div class="playbook" id="playbook">
+          <h3>Hôm nay nên làm gì</h3>
+          <p id="playbook-text">—</p>
+        </div>
+
+        <dl class="facts">
+          <div>
+            <dt>Thay đổi</dt>
+            <dd id="score-change">—</dd>
+          </div>
+          <div>
+            <dt>Độ phủ dữ liệu</dt>
+            <dd id="coverage">—</dd>
+          </div>
+          <div>
+            <dt>Ngày dữ liệu</dt>
+            <dd id="asof">—</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- ZONE 01b: Weekly vs daily divergence -->
+      <section class="card zone-diverge" aria-labelledby="dv-title">
+        <div class="card-head">
+          <h2 id="dv-title">01b · Tuần vs Ngày</h2>
+          <span class="tag" id="dv-status">—</span>
+        </div>
+        <div class="dv-bars" id="dv-bars"></div>
+        <p class="note" id="dv-note">—</p>
+      </section>
+
+      <!-- ZONE 01c: Drivers -->
+      <section class="card zone-drivers" aria-labelledby="dr-title">
+        <div class="card-head">
+          <h2 id="dr-title">01c · Trụ cột đóng góp</h2>
+          <span class="h-hint">đóng góp vào tổng</span>
+        </div>
+        <ul class="cat-list" id="cat-list"></ul>
+        <div class="drivers">
+          <div><h3 class="pos">Lực đỡ chính</h3><ol id="top-pos"></ol></div>
+          <div><h3 class="neg">Lực cản chính</h3><ol id="top-neg"></ol></div>
+        </div>
+      </section>
+
+      <!-- ZONE 4 — AURORA bridge -->
+      <section class="card zone-aurora" aria-labelledby="z4-title">
+        <div class="card-head">
+          <h2 id="z4-title">04 · Cầu nối tác chiến AURORA</h2>
+        </div>
+        <div class="matrix" id="matrix" role="table" aria-label="Ma trận Bias – Gamma – AURORA"></div>
+        <p class="note"><strong>Nguyên tắc 3 bước:</strong> Bias trả lời <em>phe nào có lợi thế</em>. Gamma trả lời <em>biên giá ở đâu</em>. AURORA trả lời <em>vào lệnh ở cây nến nào</em>. Rủi ro mỗi lệnh cố định 1R.</p>
+      </section>
+
+      <!-- ZONE 2 — Gamma -->
+      <section class="card zone-gamma" aria-labelledby="z2-title">
+        <div class="card-head">
+          <h2 id="z2-title">02 · Biên Gamma <span class="h-sub">· <span id="gamma-und">—</span></span></h2>
+          <span class="tag" id="gamma-regime">—</span>
+        </div>
+        <div class="gamma-body" id="gamma-body"></div>
+      </section>
+
+      <!-- ZONE 3 — Slide player -->
+      <section class="card zone-deck" aria-labelledby="z3-title">
+        <div class="deck-layout">
+          <!-- Cột trái: Hướng dẫn đọc nhanh & 3 quy tắc cốt lõi -->
+          <div class="deck-info">
+            <div class="card-head">
+              <h2 id="z3-title">03 · Cách đọc Market Bias <span class="h-sub">· Slide tương tác</span></h2>
+              <div class="seg" role="tablist" aria-label="Ngôn ngữ">
+                <button role="tab" data-lang="vi" aria-selected="true">VI</button>
+                <button role="tab" data-lang="en" aria-selected="false">EN</button>
+              </div>
+            </div>
+
+            <p class="deck-desc" id="deck-desc">
+              Khung slide 6 bước chuẩn hóa tư duy định lượng: cách đọc điểm Bias kết hợp biên Gamma và kích hoạt lệnh thực chiến với AURORA.
+            </p>
+
+            <ol class="howto" id="howto"></ol>
+
+            <div class="deck-tip">
+              <span class="deck-tip-badge">MẸO</span>
+              <span id="deck-tip-text">Bấm vào khung slide bên phải để xem trực quan từng nến &amp; nghe nhạc nền <strong>Write You</strong>.</span>
+            </div>
+          </div>
+
+          <!-- Cột phải: Khung điện thoại phát slide chuẩn 9:16 -->
+          <div class="deck-wrap">
+            <div class="deck-frame" id="deck-frame">
+              <button class="deck-facade" id="deck-facade" type="button">
+                <span class="play" aria-hidden="true"></span>
+                <span>Xem slide giải thích · 6 slide</span>
+                <span class="facade-sub">bấm để xem tương tác · có nhạc nền Write You</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ZONE 5 — Membership -->
+      <section class="card zone-vip" aria-labelledby="z5-title">
+        <div class="vip-intro">
+          <h2 id="z5-title">05 · Free &amp; VIP Membership</h2>
+          <p>Market Bias Terminal cung cấp dữ liệu định lượng minh bạch cho cộng đồng trader KenvinZone.</p>
+          <div class="cta-row">
+            <a class="btn primary" id="cta-telegram" href="https://t.me/kenvinzone" target="_blank" rel="noopener">Nhận Bias mỗi sáng qua Telegram</a>
+            <a class="btn ghost" id="cta-waitlist" href="https://kenvinzone.com/library/paths/master-aurora-standard/" target="_blank" rel="noopener">Khám phá lộ trình AURORA</a>
+          </div>
+        </div>
+        <div class="tiers">
+          <div class="tier">
+            <h3>Miễn phí</h3>
+            <ul>
+              <li>Điểm Bias Tuần / Ngày cho Vàng, S&amp;P 500, Nasdaq</li>
+              <li>Regime &amp; playbook hành động cụ thể</li>
+              <li>Put Wall / Call Wall / Gamma Flip chính</li>
+              <li>Slide giải thích tương tác VI / EN</li>
+            </ul>
+          </div>
+          <div class="tier vip">
+            <h3>VIP · AURORA <span class="soon">Sắp mở</span></h3>
+            <ul>
+              <li>Bóc tách đầy đủ 50+ chỉ báo thành phần</li>
+              <li>Mốc Gamma cập nhật trực tiếp trước phiên Âu / Mỹ</li>
+              <li>Cảnh báo Telegram khi Regime đổi trạng thái</li>
+              <li>14 ngày trải nghiệm trọn bộ chỉ báo AURORA</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p id="disclaimer">Dữ liệu định lượng phục vụ mục đích giáo dục, không phải khuyến nghị đầu tư tài chính.</p>
+      <p class="fine">Điểm số và Regime do engine Python của Market Bias Platform tính toán từ FRED, CFTC, SPDR, CBOE — AI không can thiệp chấm điểm. Framework v<span id="fw">—</span> · Xuất lúc <span id="generated">—</span></p>
+      <p class="fine"><a href="https://kenvinzone.com" target="_blank" rel="noopener">kenvinzone.com</a> · <a href="https://t.me/kenvinzone" target="_blank" rel="noopener">Telegram Community</a></p>
+    </footer>
+  </div>
+
+  <noscript><p class="footer">Trang cần JavaScript để hiển thị dữ liệu.</p></noscript>
+</body>
+</html>
