@@ -100,6 +100,20 @@ def main():
     else:
         print(f"[Engine] Weekly Bias remains anchored to Monday's strategic plan.")
 
+    # 3. Options Gamma Snapshots (GLD, SPY, QQQ)
+    print("\n--- 2b. REFRESHING OPTIONS GAMMA SNAPSHOTS ---")
+    try:
+        from options_data.service import refresh_options_snapshot
+        for sym in ("GLD", "SPY", "QQQ"):
+            print(f"[Options] Fetching options chain & computing Gamma levels for {sym}...")
+            try:
+                res = refresh_options_snapshot(sym, max_expirations=6)
+                print(f"[Options] ✅ {sym}: {res.expiration_count} expirations, {res.contract_count} contracts ({res.provider})")
+            except Exception as opt_err:
+                print(f"[Options Warning] {sym} fetch error: {opt_err}")
+    except Exception as exc:
+        print(f"[Options Warning] Could not import options service: {exc}")
+
     # 4. Export Web JSON
     print("\n--- 3. EXPORTING PUBLIC TERMINAL JSON ---")
     db_path = ENGINE_ROOT / "data" / "market_bias.db"
@@ -128,6 +142,7 @@ def main():
     # Re-compress DB for Git storage
     if db_path.exists():
         print("\n[DB] Syncing database compression...")
+        import gzip, shutil
         with open(db_path, "rb") as f_in, gzip.open(db_gz, "wb", compresslevel=9) as f_out:
             shutil.copyfileobj(f_in, f_out)
         print("[DB] market_bias.db.gz updated.")
