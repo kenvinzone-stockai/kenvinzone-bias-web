@@ -1,0 +1,20 @@
+# Core
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Data
+yfinance>=0.2.37
+fredapi>=0.5.1
+pandas>=2.1.0
+numpy>=1.26.0
+requests>=2.31.0
+scipy>=1.11.0
+openpyxl>=3.1.2
+
+# Database
+sqlalchemy>=2.0.25
+
+# Scheduling & Utils
+apscheduler>=3.10.4
+pytz>=2024.1
