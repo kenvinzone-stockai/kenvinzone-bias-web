@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURORA EXPLAINER — Hướng Dẫn Đọc Market Bias & Độ Tin Cậy Trend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;subset=vietnamese&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css?v=aurora-explainer-fix-v2" />
+</head>
+<body data-theme="bullish" data-score="35">
+  <div class="main-wrapper">
+    <!-- Script Panel (Left) -->
+    <div class="script-panel" id="scriptPanel">
+      <div class="script-panel-title"><i class="fa-solid fa-scroll"></i> Kịch Bản Video</div>
+      <div class="script-panel-badge" id="scriptSlideBadge">Ready</div>
+      <div class="script-panel-text" id="scriptText">Bấm vào slide để bắt đầu...</div>
+    </div>
+
+    <!-- Audio Panel (Right) -->
+    <div class="audio-panel" id="audioPanel">
+      <div class="audio-panel-title"><i class="fa-solid fa-sliders"></i> Âm Thanh</div>
+      <div class="audio-group">
+        <label class="audio-label"><i class="fa-solid fa-music"></i> Nhạc nền</label>
+        <select id="bgmSelect" onchange="switchBGM(this.value)">
+          <option value="ambient" selected>Ambient</option>
+          <option value="cinematic">Cinematic</option>
+          <option value="lofi">Lo-fi</option>
+          <option value="piano">Piano</option>
+          <option value="dark">Dark</option>
+          <option value="custom">Custom upload</option>
+          <option value="none">Tắt</option>
+        </select>
+      </div>
+      <div class="audio-panel-divider"></div>
+      <div class="audio-slide-header">
+        <span class="audio-slide-badge" id="audioPanelSlide">Ready</span>
+        <div class="audio-slide-nav">
+          <button class="audio-nav-btn" type="button" onclick="audioPanelPrev()"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="audio-nav-btn" type="button" onclick="audioPanelNext()"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+      <div class="audio-group">
+        <label class="audio-label"><i class="fa-solid fa-forward"></i> Chuyển slide</label>
+        <select id="transitionSelect" onchange="setSlideTransition(currentSlide, this.value)">
+          <option value="dramatic" selected>Dramatic</option>
+          <option value="boom">Boom</option>
+          <option value="rise">Rise</option>
+          <option value="sweep">Sweep</option>
+          <option value="bass">Bass</option>
+          <option value="chord">Chord</option>
+          <option value="ascending">Ascending</option>
+          <option value="gong">Gong</option>
+          <option value="minimal">Minimal</option>
+        </select>
+      </div>
+      <div class="audio-group">
+        <label class="audio-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Hiện element</label>
+        <select id="revealSelect" onchange="setSlideReveal(currentSlide, this.value)">
+          <option value="sparkle" selected>Sparkle</option>
+          <option value="ping">Ping</option>
+          <option value="pop">Pop</option>
+          <option value="blip">Blip</option>
+          <option value="tick">Tick</option>
+          <option value="click">Click</option>
+          <option value="bell">Bell</option>
+          <option value="bubble">Bubble</option>
+        </select>
+      </div>
+      <div class="audio-actions" style="display:flex;gap:6px;margin-top:2px;">
+        <button class="theme-editor-ghost-button" type="button" onclick="testTransition()" style="flex:1;padding:5px;font-size:10px;">Test slide</button>
+        <button class="theme-editor-ghost-button" type="button" onclick="testReveal()" style="flex:1;padding:5px;font-size:10px;">Test reveal</button>
+      </div>
+
+      <!-- Quick Slide Switcher (Bấm nhảy trực tiếp đến từng slide để preview đầy đủ) -->
+      <div class="slide-nav-pills">
+        <div class="audio-label"><i class="fa-solid fa-layer-group"></i> Xem nhanh Slide</div>
+        <div class="pill-grid">
+          <button class="slide-pill active" type="button" onclick="jumpToSlide(0)">1 · Cover</button>
+          <button class="slide-pill" type="button" onclick="jumpToSlide(1)">2 · Thang đo</button>
+          <button class="slide-pill" type="button" onclick="jumpToSlide(2)">3 · 3 Vùng</button>
+          <button class="slide-pill" type="button" onclick="jumpToSlide(3)">4 · Lệch pha</button>
+          <button class="slide-pill" type="button" onclick="jumpToSlide(4)">5 · 3 Tầng</button>
+          <button class="slide-pill" type="button" onclick="jumpToSlide(5)">6 · Kỷ luật</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide Container (9:16 mobile frame) -->
+    <div class="slide-container" id="slideContainer">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+      <!-- Top Left Brand Badge (Ẩn ở Slide 0, xuất hiện gọn gàng 22px ở Slide 1-5) -->
+      <div class="brand-top-left" id="brandTopLeft">
+        <img src="logo-kenvinzone.svg" alt="KZ" class="brand-logo" />
+        <span class="vn-brand-text">KenvinZone</span>
+      </div>
+
+      <!-- Bottom Right Watermark & Icon Logo: AURORA -->
+      <div class="brand-bottom-right">
+        <img src="logo-aurora.svg" alt="AURORA" class="brand-logo aurora-logo" />
+        <span class="aurora-brand-text">AURORA</span>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════════
+           SLIDE 0: HERO COVER (AURORA Explainer)
+           ════════════════════════════════════════════════════════ -->
+      <div class="slide active" data-slide="0">
+        <div class="slide-bg slide-bg-1"></div>
+        <canvas class="fx-canvas" data-fx="candlestick"></canvas>
+        <div class="kv-accent-bar"></div>
+        <div class="kv-s1-glow" style="background:radial-gradient(circle,rgba(56,189,248,0.35) 0%,rgba(168,85,247,0.2) 40%,transparent 70%);"></div>
+        <div class="slide-content hero-content" style="padding:90px 22px 64px;justify-content:center;align-items:center;">
+          <div class="slide-element visible">
+            <div class="kv-cv3">
+              <div class="gm-eyebrow"><i class="fa-solid fa-shield-halved"></i> AURORA Explainer</div>
+
+              <!-- Animated Hologram Core Orb -->
+              <div class="explainer-hero-orb">
+                <div class="orb-ring-1"></div>
+                <div class="orb-ring-2"></div>
+                <div class="orb-core-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+              </div>
+
+              <!-- Signature Shimmer Big Title with Clean Headroom for Vietnamese Diacritics -->
+              <h1 class="kv-hero-bigtitle title-shimmer">HƯỚNG DẪN ĐỌC BIAS<br/>&amp; ĐỘ TIN CẬY TREND</h1>
+
+              <!-- Subtitle & Key Quant Benchmark Chips -->
+              <div class="kv-hero-sub">LÀM SAO BIẾT KHI NÀO CÓ SIÊU SÓNG,<br/>KHI NÀO LÀ BẪY KẸP BIÊN?</div>
+
+              <div class="kv-hero-chips">
+                <div class="kv-chip c1"><i class="fa-solid fa-ruler-horizontal"></i> Thang đo: <b>-100 ~ +100</b></div>
+                <div class="kv-chip c2"><i class="fa-solid fa-bullseye"></i> Siêu Trend: <b>&ge; ±15 pts</b></div>
+                <div class="kv-chip c3"><i class="fa-solid fa-shield-halved"></i> Vùng Kẹp: <b>-7 ~ +7 pts</b></div>
+              </div>
+
+              <div class="gm-source-badge"><i class="fa-solid fa-bolt"></i> AURORA Trading Intelligence · KenvinZone</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════════
+           SLIDE 1: BẢN CHẤT THANG ĐIỂM & 5 TRỤ CỘT DỮ LIỆU
+           ════════════════════════════════════════════════════════ -->
+      <div class="slide" data-slide="1">
+        <div class="slide-bg slide-bg-2"></div><canvas class="fx-canvas" data-fx="matrix-rain"></canvas>
+        <div class="kv-accent-bar"></div>
+        <div class="slide-content pixelle-slide-content" style="padding:98px 20px 200px;">
+          <!-- Reveal 1: Title & Scale Header -->
+          <div class="slide-element fade-up">
+            <h2 class="slide-title">Bản chất Điểm Bias: <span style="color:#38bdf8;">Thang Đo Chuẩn Hóa -100 đến +100</span></h2>
+            <div class="kv-gauge-wrap">
+              <div class="kv-gauge-container">
+                <svg viewBox="0 0 120 120">
+                  <circle class="kv-gauge-bg" cx="60" cy="60" r="45"/>
+                  <circle class="kv-gauge-fill" cx="60" cy="60" r="45" style="stroke-dashoffset:100;stroke:#38bdf8;"/>
+                </svg>
+                <div class="kv-gauge-content">
+                  <div class="kv-gauge-num" style="color:#38bdf8;">0</div>
+                  <div class="kv-gauge-den">TRỤC CÂN BẰNG</div>
+                </div>
+              </div>
+              <div class="kv-gauge-right">
+                <div class="kv-score-label">Nguyên lý hoạt động máy tính định lượng</div>
+                <div class="kv-score-big" style="color:#38bdf8;">[-100] <span>đến</span> [+100]</div>
+                <div class="kv-score-track"><div class="kv-score-fill" style="width:100%; background:linear-gradient(90deg,#ef4444 0%,#f59e0b 50%,#22c55e 100%);"></div></div>
+                <div class="kv-status-pill"><div class="kv-status-dot" style="background:#38bdf8;"></div><div class="kv-status-text" style="color:#38bdf8;">TỔNG HỢP 50+ CHỈ BÁO VĨ MÔ</div></div>
+              </div>
+            </div>
+            <div class="kv-bias-benchmark-strip">
+              <div class="bm-zone bm-bear"><span class="bm-tag">Bearish</span><span class="bm-range">&le; -7</span></div>
+              <div class="bm-zone bm-neutral active"><span class="bm-tag">Neutral Band</span><span class="bm-range">-7 ~ +7</span></div>
+              <div class="bm-zone bm-bull"><span class="bm-tag">Bullish</span><span class="bm-range">&ge; +7</span></div>
+            </div>
+          </div>
+
+          <!-- Reveal 2: 5 Pillars -->
+          <div class="slide-element scale-in" style="display:flex; flex-direction:column; gap:6px; width:100%;">
+            <div class="vm-desc" style="font-size:10px; line-height:1.4; color:#e2e8f0; text-align:left;">
+              Điểm số không do cảm tính tạo ra, mà được tính toán liên tục từ <strong>5 nhóm trọng số lớn</strong>:
+            </div>
+            <div class="step-tier-container">
+              <div class="step-tier-card tier-1" style="padding:6px 10px;">
+                <div class="step-num-badge" style="font-size:11px; width:24px; height:24px;">1</div>
+                <div class="step-tier-info">
+                  <div class="step-tier-name">Sức mạnh USD &amp; Real Yields (FRED)</div>
+                  <div class="step-tier-desc">Đo lường chi phí cơ hội và sức hút vốn toàn cầu.</div>
+                </div>
+              </div>
+              <div class="step-tier-card tier-2" style="padding:6px 10px;">
+                <div class="step-num-badge" style="font-size:11px; width:24px; height:24px;">2</div>
+                <div class="step-tier-info">
+                  <div class="step-tier-name">Cung tiền M2 &amp; Fed Balance Sheet</div>
+                  <div class="step-tier-desc">Đo lường lượng thanh khoản thực tế đang bơm vào thị trường.</div>
+                </div>
+              </div>
+              <div class="step-tier-card tier-3" style="padding:6px 10px;">
+                <div class="step-num-badge" style="font-size:11px; width:24px; height:24px;">3</div>
+                <div class="step-tier-info">
+                  <div class="step-tier-name">Vị thế CFTC (COT) &amp; Options Gamma</div>
+                  <div class="step-tier-desc">Bóc trần dấu chân dòng tiền tổ chức và vùng cản của Market Maker.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reveal 3: Core Rule Banner -->
+          <div class="slide-element scale-in">
+            <div class="vm-warning-banner">
+              <i class="fa-solid fa-lightbulb"></i>
+              <div class="vm-warning-banner-text"><strong>Quy tắc số 1:</strong> Điểm số càng xa trục 0, thế trận giữa phe Mua và Bán càng mất cân bằng, mở ra cơ hội sóng lớn.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════════
+           SLIDE 2: 3 VÙNG TRẠNG THÁI & NGƯỠNG ĐỘ TIN CẬY (TRUST)
+           ════════════════════════════════════════════════════════ -->
+      <div class="slide" data-slide="2">
+        <div class="slide-bg slide-bg-3"></div><canvas class="fx-canvas" data-fx="constellation"></canvas>
+        <div class="kv-accent-bar"></div>
+        <div class="slide-content pixelle-slide-content" style="padding:98px 20px 200px;">
+          <!-- Reveal 1: Title -->
+          <div class="slide-element fade-up">
+            <h2 class="slide-title">Ngưỡng nào đạt: <span style="background:linear-gradient(135deg,#fbbf24,#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Độ Tin Cậy Xu Hướng (High Trust)?</span></h2>
+          </div>
+
+          <!-- Reveal 2: 3 Regime Breakdown -->
+          <div class="slide-element scale-in" style="width:100%;">
+            <div class="regime-big-grid">
+              <!-- Regime 1: Neutral -->
+              <div class="regime-big-card neutral">
+                <div class="regime-card-top">
+                  <span class="regime-card-title"><i class="fa-solid fa-scale-balanced"></i> Vùng Trung Tính: -7 ~ +7</span>
+                  <span class="regime-trust-pill">Độ Trust Trend: Thấp</span>
+                </div>
+                <div class="regime-card-desc">Thị trường kéo co cân bằng, không có sóng dài. Giá vận động kẹt giữa <strong>Put Wall</strong> và <strong>Call Wall</strong>.</div>
+                <div class="regime-card-action">Chiến lược: <span>Đánh ngắn đảo chiều tại biên Gamma. Tuyệt đối không đánh breakout!</span></div>
+              </div>
+
+              <!-- Regime 2: Tilt -->
+              <div class="regime-big-card tilt">
+                <div class="regime-card-top">
+                  <span class="regime-card-title"><i class="fa-solid fa-arrow-trend-up"></i> Vùng Có Xu Hướng: |7| ~ |15|</span>
+                  <span class="regime-trust-pill">Độ Trust Trend: Khá (Bull/Bear)</span>
+                </div>
+                <div class="regime-card-desc">Một phe bắt đầu chiếm ưu thế rõ rệt. Vĩ mô hỗ trợ đà tăng (+7~+15) hoặc áp lực giảm (-15~-7).</div>
+                <div class="regime-card-action">Chiến lược: <span>Ưu tiên lệnh cùng chiều với Bias khi giá test các vùng hỗ trợ/kháng cự.</span></div>
+              </div>
+
+              <!-- Regime 3: Super Trend -->
+              <div class="regime-big-card super-trend">
+                <div class="regime-card-top">
+                  <span class="regime-card-title"><i class="fa-solid fa-bolt-lightning"></i> Vùng Siêu Xu Hướng: &ge; |±15|</span>
+                  <span class="regime-trust-pill">Độ Trust Trend: Cực Cao (Strong Trend)</span>
+                </div>
+                <div class="regime-card-desc">⭐️ <strong>Hội tụ vĩ mô toàn diện.</strong> Cả USD, Lãi suất và Cung tiền cùng mở đường cho 1 chiều duy nhất!</div>
+                <div class="regime-card-action">Chiến lược: <span>Chỉ Buy (khi &ge; +15) hoặc chỉ Sell (khi &le; -15). Gồng lãi tối đa theo AURORA, không cản tàu!</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reveal 3: Key Note -->
+          <div class="slide-element scale-in">
+            <div class="explainer-quote-box">
+              <div class="explainer-quote-header"><i class="fa-solid fa-bullseye"></i> Ghi nhớ thực chiến</div>
+              <div class="explainer-quote-body">Muốn đánh Trend dài hạn ăn sóng lớn? Hãy kiên nhẫn chờ điểm Bias <strong>vượt ngưỡng ±15</strong> (Strong Trend). Còn trong biên ±7, tôn trọng biên độ dao động!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════════
+           SLIDE 3: QUY TẮC LỆCH PHA GIỮA KHUNG NGÀY VÀ KHUNG TUẦN
+           ════════════════════════════════════════════════════════ -->
+      <div class="slide" data-slide="3">
+        <div class="slide-bg slide-bg-4"></div><canvas class="fx-canvas" data-fx="wave-grid"></canvas>
+        <div class="kv-accent-bar"></div>
+        <div class="slide-content pixelle-slide-content" style="padding:98px 20px 200px;">
+          <!-- Reveal 1: Title -->
+          <div class="slide-element fade-up">
+            <h2 class="slide-title">Bẫy phân kỳ: <span style="color:#fbbf24;">Khung Ngày (Daily) Lệch Pha Khung Tuần (Weekly)</span></h2>
+          </div>
+
+          <!-- Reveal 2: Comparison Divergence -->
+          <div class="slide-element scale-in" style="width:100%; display:flex; flex-direction:column; gap:6px;">
+            <div class="daily-divergence-box">
+              <div class="divergence-card weekly">
+                <div class="period-lbl"><i class="fa-solid fa-compass"></i> Báo Cáo Tuần (Chiến Lược)</div>
+                <div class="score-val">+1.50 pts</div>
+                <div class="regime-sub">LA BÀN DÀI HẠN: HỒI PHỤC</div>
+              </div>
+              <div class="divergence-card daily">
+                <div class="period-lbl"><i class="fa-solid fa-stopwatch"></i> Báo Cáo Ngày (Chiến Thuật)</div>
+                <div class="score-val">-2.10 pts</div>
+                <div class="regime-sub">XUNG LỰC NGÀY: ÁP LỰC CHỮNG LẠI</div>
+              </div>
+            </div>
+
+            <div class="vm-data-card" style="padding:8px 12px; background:rgba(255,255,255,0.04);">
+              <div class="vm-card-header" style="margin-bottom:3px;">
+                <div class="vm-card-icon yellow" style="width:24px; height:24px; font-size:11px;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div class="vm-card-title" style="font-size:11px; font-weight:800;">Hiện tượng gì đang diễn ra?</div>
+              </div>
+              <div class="vm-desc" style="font-size:9.5px; line-height:1.4;">
+                Vĩ mô tuần chuyển sắc xanh (Real Yield giảm), nhưng trong ngày đồng USD giật tăng khiến điểm ngắn hạn bị âm. Đây là nguyên nhân khiến giá <strong>không thể bứt phá ngay mà sẽ có nhịp nhúng điều chỉnh</strong>.
+              </div>
+            </div>
+          </div>
+
+          <!-- Reveal 3: Rule of Alignment -->
+          <div class="slide-element scale-in">
+            <div class="vm-warning-banner" style="border-color:rgba(74,222,128,0.35); background:rgba(74,222,128,0.08);">
+              <i class="fa-solid fa-circle-check" style="color:#4ade80;"></i>
+              <div class="vm-warning-banner-text" style="color:#e2e8f0;">
+                <strong style="color:#4ade80;">Nguyên tắc đồng thuận vàng:</strong> Khi cả Weekly Bias và Daily Flash Bias <strong>CÙNG DƯƠNG hoặc CÙNG ÂM</strong>, xác suất thành công của xu hướng được củng cố vượt trội!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════════
+           SLIDE 4: BỘ 3 TÁC CHIẾN (MBP -> GAMMA -> AURORA)
+           ════════════════════════════════════════════════════════ -->
+      <div class="slide" data-slide="4">
+        <div class="slide-bg slide-bg-5"></div><canvas class="fx-canvas" data-fx="scan"></canvas>
+        <div class="kv-accent-bar"></div>
+        <div class="slide-content pixelle-slide-content" style="padding:98px 20px 200px;">
+          <!-- Reveal 1: Title -->
+          <div class="slide-element fade-up">
+            <h2 class="slide-title">Quy trình 3 Tầng: <span style="background:linear-gradient(135deg,#38bdf8,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Từ La Bàn Đến Điểm Bóp Cò</span></h2>
+          </div>
+
+          <!-- Reveal 2: 3 Steps -->
+          <div class="slide-element scale-in" style="width:100%;">
+            <div class="step-tier-container">
+              <div class="step-tier-card tier-1">
+                <div class="step-num-badge">T1</div>
+                <div class="step-tier-info">
+                  <div class="step-tier-name"><i class="fa-solid fa-compass"></i> Market Bias Platform (La Bàn Vĩ Mô)</div>
+                  <div class="step-tier-desc">Trả lời câu hỏi: <strong>Phe nào nắm lợi thế? Chỉ canh Buy hay chỉ canh Sell?</strong></div>
+                </div>
+              </div>
+
+              <div class="step-tier-card tier-2">
+                <div class="step-num-badge">T2</div>
+                <div class="step-tier-info">
+                  <div class="step-tier-name"><i class="fa-solid fa-arrows-to-dot"></i> Options Gamma Boundaries (Biên Độ)</div>
+                  <div class="step-tier-desc">Xác định sàn đỡ <strong>Put Wall</strong> &amp; cản trên <strong>Call Wall</strong> của Market Maker.</div>
+                </div>
+              </div>
+
+              <div class="step-tier-card tier-3">
+                <div class="step-num-badge">T3</div>
+                <div class="step-tier-info">
+                  <div class="step-tier-name"><i class="fa-solid fa-crosshairs"></i> AURORA TradingView Indicator (Bóp Cò)</div>
+                  <div class="step-tier-desc">Chờ thuật toán AURORA xuất hiện <strong>tín hiệu kích hoạt M15/H1</strong> cùng chiều với Bias để vào lệnh!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reveal 3: The Secret -->
+          <div class="slide-element scale-in">
+            <div class="explainer-quote-box">
+              <div class="explainer-quote-header"><i class="fa-solid fa-gem"></i> Giá trị thực sự</div>
+              <div class="explainer-quote-body">
+                Không có la bàn vĩ mô $\rightarrow$ Trader dễ bị tâm lý cuốn theo nến. Có la bàn nhưng không có <strong>AURORA</strong> $\rightarrow$ Điểm vào lệnh bị trễ và Stoploss xa. Kết hợp cả 2 là vũ khí tối thượng!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════════
+           SLIDE 5: KẾT LUẬN & HÀNH ĐỘNG THỰC CHIẾN
+           ════════════════════════════════════════════════════════ -->
+      <div class="slide" data-slide="5">
+        <div class="slide-bg slide-bg-6"></div><canvas class="fx-canvas" data-fx="bokeh"></canvas>
+        <div class="kv-accent-bar"></div>
+        <div class="slide-content pixelle-slide-content" style="padding:98px 20px 200px;">
+          <!-- Reveal 1: Title -->
+          <div class="slide-element fade-up">
+            <h2 class="slide-title">Tóm tắt kỷ luật: <span style="color:#22c55e;">Giao Dịch Bằng Xác Suất, Không Đoán Mò</span></h2>
+          </div>
+
+          <!-- Reveal 2: 3 Rules Summary Card -->
+          <div class="slide-element scale-in" style="width:100%; display:flex; flex-direction:column; gap:6px;">
+            <div class="vm-data-card" style="padding:9px 12px; background:rgba(255,255,255,0.04);">
+              <div style="display:flex; flex-direction:column; gap:6px;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:900; color:#fbbf24;">01</span>
+                  <span style="font-size:10px; color:#e2e8f0;">Điểm trong vùng <strong>-7 đến +7</strong> $\rightarrow$ Đánh ngắn, chốt lời theo biên Gamma.</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:900; color:#38bdf8;">02</span>
+                  <span style="font-size:10px; color:#e2e8f0;">Điểm vượt <strong>&ge; ±15</strong> $\rightarrow$ Tự tin gồng lãi theo siêu sóng vĩ mô.</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:900; color:#4ade80;">03</span>
+                  <span style="font-size:10px; color:#e2e8f0;">Luôn chờ <strong>AURORA</strong> xác nhận tín hiệu để tối ưu điểm vào và dừng lỗ an toàn.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="aurora-action-card" style="padding:9px 12px;">
+              <div class="aurora-action-header">
+                <div class="aurora-action-icon"><i class="fa-solid fa-rocket"></i></div>
+                <div class="aurora-action-title">Tham gia cộng đồng Quants KenvinZone</div>
+              </div>
+              <div class="aurora-action-desc">
+                Cập nhật bản tin Market Bias độc quyền hàng tuần &amp; trải nghiệm giải pháp tác chiến <strong>AURORA</strong> tại <strong>KenvinZone.com</strong>.
+              </div>
+            </div>
+          </div>
+
+          <!-- Reveal 3: Outro Banner -->
+          <div class="slide-element scale-in">
+            <div class="vm-warning-banner" style="border-color:rgba(56,189,248,0.35); background:rgba(56,189,248,0.08);">
+              <i class="fa-solid fa-heart" style="color:#38bdf8;"></i>
+              <div class="vm-warning-banner-text" style="color:#ffffff;">
+                Hãy <strong>Like, Follow &amp; Lưu video</strong> để trang bị tư duy định lượng chuẩn tổ chức nhé!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side Controls (Right of slide container) -->
+    <div class="side-controls">
+      <button class="side-btn" id="muteBtn" type="button" onclick="toggleMute()"><i class="fa-solid fa-volume-high"></i></button>
+      <div class="side-divider"></div>
+      <button class="side-btn" id="prevBtn" type="button" onclick="prevSlide()"><i class="fa-solid fa-chevron-up"></i></button>
+      <div class="side-counter"><span id="currentSlide">1</span>/<span id="totalSlides">6</span></div>
+      <button class="side-btn" id="nextBtn" type="button" onclick="nextSlide()"><i class="fa-solid fa-chevron-down"></i></button>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var theme = document.body.dataset.theme || 'bullish';
+      var fxMap = {
+        bearish:  ['candlestick','matrix-rain','radar','scan','candlestick','matrix-rain'],
+        cautious: ['candlestick','matrix-rain','constellation','wave-grid','scan','bokeh'],
+        bullish:  ['candlestick','matrix-rain','constellation','wave-grid','scan','bokeh']
+      };
+      var map = fxMap[theme] || fxMap.bullish;
+      document.querySelectorAll('.fx-canvas').forEach(function(c,i){
+        if(map[i]) c.dataset.fx = map[i];
+      });
+    })();
+
+    function syncBrandVisibility() {
+      var b = document.getElementById('brandTopLeft');
+      if (b) {
+        b.style.display = 'flex';
+      }
+    }
+    window.addEventListener('click', function(){ setTimeout(syncBrandVisibility, 50); });
+    window.addEventListener('keydown', function(){ setTimeout(syncBrandVisibility, 50); });
+    setTimeout(syncBrandVisibility, 100);
+
+    // Quick Slide Jumper: Nhảy trực tiếp đến slide và hiển thị đầy đủ toàn bộ nội dung
+    function jumpToSlide(slideIndex) {
+      if (typeof goToSlide === 'function') {
+        goToSlide(slideIndex);
+        setTimeout(function() {
+          var s = document.querySelector('.slide[data-slide="' + slideIndex + '"]');
+          if (s) {
+            s.querySelectorAll('.slide-element').forEach(function(el) {
+              el.classList.add('visible');
+            });
+            s.querySelectorAll('.highlightable').forEach(function(el) {
+              el.classList.add('highlighted');
+            });
+          }
+        }, 120);
+        syncPillState(slideIndex);
+      }
+    }
+
+    function syncPillState(idx) {
+      document.querySelectorAll('.slide-pill').forEach(function(p, i) {
+        p.classList.toggle('active', i === idx);
+      });
+    }
+
+    // Phím tắt bàn phím: bấm 1-6 để chuyển tức thì tới slide đó
+    document.addEventListener('keydown', function(e) {
+      var n = parseInt(e.key);
+      if (n >= 1 && n <= 6) {
+        jumpToSlide(n - 1);
+      }
+    });
+
+    window.addEventListener('click', function() {
+      setTimeout(function() {
+        if (typeof currentSlide !== 'undefined') syncPillState(currentSlide);
+      }, 80);
+    });
+  </script>
+  <script src="../gold-macro-bias-template/app.js?v=aurora-explainer-v2"></script>
+</body>
+</html>

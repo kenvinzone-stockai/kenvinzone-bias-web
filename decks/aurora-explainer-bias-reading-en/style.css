@@ -1,0 +1,12 @@
+@import url("../aurora-explainer-bias-reading/style.css");
+
+/* ========================================================
+   AURORA EXPLAINER (ENGLISH VERSION) — THEME & ADJUSTMENTS
+   ======================================================== */
+
+.brand-top-left .vn-brand-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.5px;
+}
