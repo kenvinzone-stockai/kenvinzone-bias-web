@@ -7,6 +7,8 @@ from __future__ import annotations
 import os
 import sys
 import json
+import gzip
+import shutil
 from pathlib import Path
 from datetime import date, datetime
 
@@ -14,12 +16,24 @@ from datetime import date, datetime
 ENGINE_ROOT = Path(__file__).resolve().parent
 REPO_ROOT = ENGINE_ROOT.parent
 
+# ── MUST DECOMPRESS DB BEFORE ANY SQLALCHEMY OR CORE IMPORTS ────────────────
+db_path = ENGINE_ROOT / "data" / "market_bias.db"
+db_gz = ENGINE_ROOT / "data" / "market_bias.db.gz"
+
+if (not db_path.exists() or db_path.stat().st_size < 1000) and db_gz.exists():
+    print(f"[DB] Found compressed market_bias.db.gz ({db_gz.stat().st_size / (1024*1024):.2f} MB)")
+    print("[DB] Decompressing market_bias.db before database initialization...")
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    with gzip.open(db_gz, "rb") as f_in, open(db_path, "wb") as f_out:
+        shutil.copyfileobj(f_in, f_out)
+    print(f"[DB] Decompression finished! Extracted size: {db_path.stat().st_size / (1024*1024):.2f} MB")
+
 sys.path.insert(0, str(ENGINE_ROOT))
 
 # Database & Ingestion imports
 from core.database import init_db
 from core.config import settings
-from ingestion.pipeline import run_pipeline
+from ingestion.pipeline import run_ingestion
 from bias.engine import BiasEngine
 from scripts.export_web_json import build, validate
 
@@ -50,7 +64,7 @@ def main():
     print("\n--- 1. INGESTING FRESH MARKET DATA ---")
     print(f"[Ingest] Fetching Daily feeds (FRED, Yahoo, SPDR)...")
     try:
-        run_pipeline(timeframe="daily", force=False)
+        run_ingestion(timeframe="daily", force=False)
         print("[Ingest] Daily ingestion finished.")
     except Exception as exc:
         print(f"[Ingest Warning] Daily ingestion encountered error: {exc}")
@@ -58,7 +72,7 @@ def main():
     if is_weekly_day:
         print(f"[Ingest] Today is {weekday_names[weekday]}: Fetching Weekly feeds (COT, Macro Liquidity)...")
         try:
-            run_pipeline(timeframe="weekly", force=False)
+            run_ingestion(timeframe="weekly", force=False)
             print("[Ingest] Weekly ingestion finished.")
         except Exception as exc:
             print(f"[Ingest Warning] Weekly ingestion encountered error: {exc}")
@@ -111,6 +125,13 @@ def main():
         w, d = a["weekly"] or {}, a["daily"] or {}
         print(f"  • {k:7s} | Daily: {d.get('score')!s:>6} ({d.get('regime')!s:14s}) | Weekly: {w.get('score')!s:>6} ({w.get('regime')!s:14s})")
         
+    # Re-compress DB for Git storage
+    if db_path.exists():
+        print("\n[DB] Syncing database compression...")
+        with open(db_path, "rb") as f_in, gzip.open(db_gz, "wb", compresslevel=9) as f_out:
+            shutil.copyfileobj(f_in, f_out)
+        print("[DB] market_bias.db.gz updated.")
+
     print("=" * 60)
     print("  ALL TASKS COMPLETED SUCCESSFULLY")
     print("=" * 60)
