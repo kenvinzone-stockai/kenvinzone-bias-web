@@ -2,12 +2,13 @@ name: Automated Market Bias Daily & Weekly Update
 
 on:
   schedule:
-    # Lần 1: 06:30 Sáng giờ VN (GMT+7) = 23:30 UTC (Chủ Nhật - Thứ 5)
-    - cron: '30 23 * * 0-4'
-    # Lần 2: 07:15 Sáng giờ VN (GMT+7) = 00:15 UTC (Thứ 2 - Thứ 6)
-    - cron: '15 0 * * 1-5'
-  workflow_dispatch: # Cho phép bấm chạy thủ công trên điện thoại hoặc máy tính bất kỳ lúc nào
-
+    # Lần 1: 06:17 Sáng giờ VN (GMT+7) = 23:17 UTC (Chủ Nhật - Thứ 5)
+    - cron: '17 23 * * 0-4'
+    # Lần 2: 07:08 Sáng giờ VN (GMT+7) = 00:08 UTC (Thứ 2 - Thứ 6)
+    - cron: '8 0 * * 1-5'
+    # Lần 3 (Dự phòng): 07:35 Sáng giờ VN (GMT+7) = 00:35 UTC (Thứ 2 - Thứ 6)
+    - cron: '35 0 * * 1-5'
+  workflow_dispatch:
 permissions:
   contents: write
 
