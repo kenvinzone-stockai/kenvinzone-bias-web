@@ -348,25 +348,32 @@ em { font-style: normal; color: var(--text); font-weight: 600; }
 /* ── Zone 2: Gamma ────────────────────────────────────────────────────────── */
 .zone-gamma { display: flex; flex-direction: column; }
 .gamma-body { flex: 1; display: flex; flex-direction: column; }
-.ladder { position: relative; height: 96px; margin: 30px 8px 8px; }
+.ladder { position: relative; height: 114px; margin: 30px 8px 8px; }
 .ladder .rail {
-  position: absolute; left: 0; right: 0; top: 42px; height: 10px; border-radius: 6px;
+  position: absolute; left: 0; right: 0; top: 54px; height: 10px; border-radius: 6px;
   background: linear-gradient(90deg,
     color-mix(in srgb, var(--r-sbull) 45%, var(--track)),
     color-mix(in srgb, var(--gold) 35%, var(--track)) 50%,
     color-mix(in srgb, var(--r-sbear) 45%, var(--track)));
 }
 .lv { position: absolute; top: 0; transform: translateX(-50%); text-align: center; font: 600 12px var(--mono); white-space: nowrap; }
-.lv .lv-line { width: 2px; height: 30px; margin: 4px auto 0; background: currentColor; border-radius: 1px; }
-.lv .lv-name { font: 500 11px var(--sans); color: var(--muted); }
+.lv .lv-line { width: 2px; height: 15px; margin: 3px auto 0; background: currentColor; border-radius: 1px; }
+.lv .lv-name { font: 500 11px var(--sans); color: var(--muted); line-height: 1.3; }
+.lv .lv-val { font: 600 12.5px var(--mono); line-height: 1.3; }
+.lv .lv-spot { font: 500 10.5px var(--mono); color: var(--dim); line-height: 1.3; }
 .lv.put { color: var(--r-sbull); } .lv.call { color: var(--r-sbear); } .lv.flip { color: var(--gold); }
-.lv.spot { top: 37px; color: var(--cyan); }
+.lv.spot { top: 49px; color: var(--cyan); }
 .lv.spot .dot { width: 18px; height: 18px; border-radius: 50%; margin: 0 auto; background: var(--cyan); border: 3px solid var(--panel); box-shadow: 0 0 0 1px var(--cyan); }
-.lv.spot .lv-name { margin-top: 6px; color: var(--cyan); font-weight: 600; }
+.lv.spot .lv-name { margin-top: 5px; color: var(--cyan); font-weight: 600; line-height: 1.3; }
+.lv.spot .lv-spot { color: var(--dim); font-size: 11px; margin-top: 1px; line-height: 1.3; }
 .g-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 22px; }
 .g-stat { padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--inset); }
 .g-stat .k { font-size: 12px; color: var(--dim); }
-.g-stat .v { font: 600 17px var(--mono); font-variant-numeric: tabular-nums; }
+.g-stat .v { font: 600 17px var(--mono); font-variant-numeric: tabular-nums; display: flex; align-items: baseline; gap: 4px; }
+.g-stat .v-unit { font-size: 11px; font-weight: 500; color: var(--dim); }
+.g-stat .v-spot { font: 500 12.5px var(--mono); color: var(--muted); margin-top: 4px; display: flex; align-items: baseline; gap: 4px; }
+.g-stat .v-spot strong { color: var(--text); font-weight: 600; font-size: 13.5px; }
+.g-stat .v-spot .v-sym { font-size: 10.5px; color: var(--cyan); font-weight: 600; }
 .empty {
   flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 6px;
   padding: 24px 18px; border: 1px dashed var(--line-2); border-radius: var(--r-sm);

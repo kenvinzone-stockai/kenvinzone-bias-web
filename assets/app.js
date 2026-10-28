@@ -257,7 +257,8 @@
   }
 
   function renderGamma() {
-    const g = state.data.assets[state.asset].gamma || {};
+    const a = state.data.assets[state.asset];
+    const g = a.gamma || {};
     $("gamma-und").textContent = g.underlying || "—";
     const tag = $("gamma-regime");
     const body = $("gamma-body");
@@ -277,25 +278,69 @@
     else if (g.gammaRegime === "negative") { tag.textContent = "Gamma âm: biến động mạnh"; tag.className = "tag bad"; }
     else { tag.textContent = "—"; tag.className = "tag"; }
 
+    // Quy đổi tương ứng ra mức Giao ngay Spot (XAUUSD / SPX / NDX) cho trader
+    const sa = g.spotAsset || null;
+    const spotSym = (sa && sa.symbol) || (state.asset === "GOLD" ? "XAUUSD" : (state.asset === "SPX" ? "SPX" : "NDX"));
+    
+    // Tỷ lệ quy đổi động từ DB hoặc hệ số chuẩn
+    let ratio = sa && sa.ratio;
+    if (!ratio && g.spot) {
+      if (state.asset === "GOLD") {
+        ratio = g.spot > 300 ? (4062.0 / 367.82) : 10.85;
+      } else if (state.asset === "SPX") {
+        ratio = 10.03;
+      } else if (state.asset === "NASDAQ") {
+        ratio = 41.25;
+      }
+    }
+
+    const spotPut = (sa && sa.putWall) || (ratio && g.putWall ? Math.round(g.putWall * ratio * 10) / 10 : null);
+    const spotCall = (sa && sa.callWall) || (ratio && g.callWall ? Math.round(g.callWall * ratio * 10) / 10 : null);
+    const spotFlip = (sa && sa.gammaFlip) || (ratio && g.gammaFlip ? Math.round(g.gammaFlip * ratio * 10) / 10 : null);
+    const spotPrice = (sa && sa.spot) || (ratio && g.spot ? Math.round(g.spot * ratio * 10) / 10 : null);
+
     const pts = [g.putWall, g.callWall, g.gammaFlip, g.spot].filter((v) => v != null);
     let lo = Math.min(...pts), hi = Math.max(...pts);
     const pad = (hi - lo) * 0.12 || 1; lo -= pad; hi += pad;
     const x = (v) => ((v - lo) / (hi - lo)) * 100;
-    const lv = (cls, name, v) => v == null ? "" :
-      `<div class="lv ${cls}" style="left:${x(v)}%">${cls === "spot" ? '<div class="dot"></div>' : ""}
-        ${cls !== "spot" ? `<div class="lv-name">${name}</div><div>${fmtNum(v)}</div><div class="lv-line"></div>` : `<div class="lv-name">${name} ${fmtNum(v)}</div>`}</div>`;
+
+    const lv = (cls, name, v, sv) => {
+      if (v == null) return "";
+      const sub = sv != null ? `<div class="lv-spot">≈ ${fmtNum(sv, 1)}</div>` : "";
+      return `<div class="lv ${cls}" style="left:${x(v)}%">
+        ${cls === "spot" ? '<div class="dot"></div>' : ""}
+        ${cls !== "spot" 
+          ? `<div class="lv-name">${name}</div><div class="lv-val">${fmtNum(v)}</div>${sub}<div class="lv-line"></div>` 
+          : `<div class="lv-name">${name} ${fmtNum(v)}</div>${sub}`}
+      </div>`;
+    };
+
+    const statCard = (k, v, sv, col) => {
+      const sub = sv != null ? `<div class="v-spot">≈ <strong>${fmtNum(sv, 1)}</strong> <span class="v-sym">${spotSym}</span></div>` : "";
+      return `<div class="g-stat">
+        <div class="k">${k}</div>
+        <div class="v" style="color:${col}">${fmtNum(v)} <span class="v-unit">${g.underlying}</span></div>
+        ${sub}
+      </div>`;
+    };
+
+    const noteSpot = spotPrice ? ` · Mức quy đổi <strong>${spotSym}</strong> là giá tham chiếu tương đương (1 ${g.underlying} ≈ ${fmtNum(ratio, 2)} ${spotSym}) giúp trader dễ dàng áp dụng mốc cản/hỗ trợ trên biểu đồ MT4/MT5.` : "";
+
     body.innerHTML = `
       <div class="ladder" aria-label="Thang mốc Gamma">
         <div class="rail"></div>
-        ${lv("put", "Put Wall", g.putWall)}${lv("flip", "Gamma Flip", g.gammaFlip)}${lv("call", "Call Wall", g.callWall)}${lv("spot", "Giá", g.spot)}
+        ${lv("put", "Put Wall", g.putWall, spotPut)}
+        ${lv("flip", "Gamma Flip", g.gammaFlip, spotFlip)}
+        ${lv("call", "Call Wall", g.callWall, spotCall)}
+        ${lv("spot", "Giá", g.spot, spotPrice)}
       </div>
       <div class="g-stats">
-        <div class="g-stat"><div class="k">Put Wall</div><div class="v" style="color:var(--r-sbull)">${fmtNum(g.putWall)}</div></div>
-        <div class="g-stat"><div class="k">Call Wall</div><div class="v" style="color:var(--r-sbear)">${fmtNum(g.callWall)}</div></div>
-        <div class="g-stat"><div class="k">Gamma Flip</div><div class="v" style="color:var(--gold)">${fmtNum(g.gammaFlip)}</div></div>
-        <div class="g-stat"><div class="k">Giá ${g.underlying}</div><div class="v" style="color:var(--cyan)">${fmtNum(g.spot)}</div></div>
+        ${statCard("Put Wall (Hỗ trợ)", g.putWall, spotPut, "var(--r-sbull)")}
+        ${statCard("Call Wall (Kháng cự)", g.callWall, spotCall, "var(--r-sbear)")}
+        ${statCard("Gamma Flip (Đảo pha)", g.gammaFlip, spotFlip, "var(--gold)")}
+        ${statCard(`Giá ${g.underlying}`, g.spot, spotPrice, "var(--cyan)")}
       </div>
-      <p class="muted small">Đơn vị: giá ${g.underlying} (ETF), không phải giá giao ngay. Dữ liệu ngày ${fmtDate(g.asOf)}${g.source === "manual" ? " · nhập tay" : ""}${stale ? ' · <span style="color:var(--gold)">dữ liệu cũ</span>' : ""}.</p>`;
+      <p class="muted small">Đơn vị gốc: giá ${g.underlying} (ETF)${noteSpot} Dữ liệu ngày ${fmtDate(g.asOf)}${g.source === "manual" ? " · nhập tay" : ""}${stale ? ' · <span style="color:var(--gold)">dữ liệu cũ</span>' : ""}.</p>`;
   }
 
   function renderStatus() {
