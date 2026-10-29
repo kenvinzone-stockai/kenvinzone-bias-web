@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-10-29T08:05:53+07:00",
+  "generatedAt": "2026-10-29T08:33:13+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -137,7 +137,7 @@
       },
       "daily": {
         "asOf": "2026-10-29",
-        "computedAt": "2026-10-29 01:05:46.733589",
+        "computedAt": "2026-10-29 01:33:07.711369",
         "score": -3.5,
         "regime": "Neutral",
         "prevScore": -6.8,
@@ -256,15 +256,15 @@
         "underlying": "GLD",
         "source": "mbp_engine",
         "asOf": "2026-10-28",
-        "spot": 372.28,
+        "spot": 373.51,
         "putWall": 365.0,
         "callWall": 380.0,
         "gammaFlip": 369.13,
-        "netGex": 13077725.0,
+        "netGex": 18865254.0,
         "gammaRegime": "positive",
         "expiration": "2026-10-29",
         "maxPain": 371.0,
-        "expectedMove": 4.4,
+        "expectedMove": 4.39,
         "putCallOiRatio": 0.428
       }
     },
@@ -377,7 +377,7 @@
       },
       "daily": {
         "asOf": "2026-10-29",
-        "computedAt": "2026-10-29 01:05:46.727795",
+        "computedAt": "2026-10-29 01:33:07.706007",
         "score": -1.7,
         "regime": "Neutral",
         "prevScore": -3.9,
@@ -490,15 +490,15 @@
         "underlying": "SPY",
         "source": "mbp_engine",
         "asOf": "2026-10-28",
-        "spot": 769.66,
+        "spot": 772.31,
         "putWall": 758.0,
         "callWall": 790.0,
         "gammaFlip": 770.62,
-        "netGex": -100994497.0,
-        "gammaRegime": "negative",
+        "netGex": 184842001.0,
+        "gammaRegime": "positive",
         "expiration": "2026-10-29",
         "maxPain": 768.0,
-        "expectedMove": 5.62,
+        "expectedMove": 5.26,
         "putCallOiRatio": 2.262
       }
     },
@@ -611,7 +611,7 @@
       },
       "daily": {
         "asOf": "2026-10-29",
-        "computedAt": "2026-10-29 01:05:46.731219",
+        "computedAt": "2026-10-29 01:33:07.709085",
         "score": 4.1,
         "regime": "Neutral",
         "prevScore": -0.1,
@@ -724,15 +724,15 @@
         "underlying": "QQQ",
         "source": "mbp_engine",
         "asOf": "2026-10-28",
-        "spot": 721.25,
+        "spot": 725.61,
         "putWall": 535.0,
         "callWall": 725.0,
-        "gammaFlip": 720.47,
-        "netGex": 42566561.0,
+        "gammaFlip": 720.48,
+        "netGex": 256852035.0,
         "gammaRegime": "positive",
         "expiration": "2026-10-29",
         "maxPain": 719.0,
-        "expectedMove": 8.66,
+        "expectedMove": 8.15,
         "putCallOiRatio": 2.061
       }
     }
