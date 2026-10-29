@@ -8,7 +8,10 @@ on:
     - cron: '8 0 * * 1-5'
     # Lần 3 (Dự phòng): 07:35 Sáng giờ VN (GMT+7) = 00:35 UTC (Thứ 2 - Thứ 6)
     - cron: '35 0 * * 1-5'
-  workflow_dispatch:
+  workflow_dispatch: # Cho phép bấm chạy thủ công trên điện thoại hoặc máy tính
+  repository_dispatch: # Cho phép webhook bên ngoài (cron-job.org) kích hoạt chuẩn từng giây
+    types: [daily_bias_trigger, webhook]
+
 permissions:
   contents: write
 
