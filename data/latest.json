@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-10-30T10:47:07+07:00",
+  "generatedAt": "2026-10-30T11:26:54+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -256,15 +256,15 @@
         "underlying": "GLD",
         "source": "mbp_engine",
         "asOf": "2026-10-29",
-        "spot": 368.57,
+        "spot": 373.51,
         "putWall": 355.0,
         "callWall": 390.0,
-        "gammaFlip": 371.28,
-        "netGex": -136787653.0,
-        "gammaRegime": "negative",
+        "gammaFlip": 371.29,
+        "netGex": 132470895.0,
+        "gammaRegime": "positive",
         "expiration": "2026-10-30",
         "maxPain": 373.0,
-        "expectedMove": 3.08,
+        "expectedMove": 5.4,
         "putCallOiRatio": 0.503
       }
     },
@@ -491,15 +491,15 @@
         "source": "mbp_engine",
         "asOf": "2026-10-29",
         "spot": 769.36,
-        "putWall": 570.0,
-        "callWall": 800.0,
-        "gammaFlip": 769.74,
-        "netGex": -212162888.0,
-        "gammaRegime": "negative",
+        "putWall": null,
+        "callWall": null,
+        "gammaFlip": null,
+        "netGex": null,
+        "gammaRegime": null,
         "expiration": "2026-10-30",
-        "maxPain": 765.0,
-        "expectedMove": 5.35,
-        "putCallOiRatio": 2.47
+        "maxPain": null,
+        "expectedMove": 5.36,
+        "putCallOiRatio": null
       }
     },
     "NASDAQ": {
@@ -725,15 +725,15 @@
         "source": "mbp_engine",
         "asOf": "2026-10-29",
         "spot": 715.34,
-        "putWall": 690.0,
-        "callWall": 740.0,
-        "gammaFlip": 719.04,
-        "netGex": -654843201.0,
-        "gammaRegime": "negative",
+        "putWall": null,
+        "callWall": 602.0,
+        "gammaFlip": null,
+        "netGex": 0.0,
+        "gammaRegime": "positive",
         "expiration": "2026-10-30",
-        "maxPain": 723.0,
-        "expectedMove": 10.76,
-        "putCallOiRatio": 2.042
+        "maxPain": null,
+        "expectedMove": 10.62,
+        "putCallOiRatio": null
       }
     }
   }
