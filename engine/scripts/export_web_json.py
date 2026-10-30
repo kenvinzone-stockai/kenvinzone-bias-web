@@ -40,9 +40,9 @@ DEFAULT_OVERRIDES = WEB_ROOT / "data" / "gamma-overrides.json"
 
 # Engine asset key -> public display + options underlying (options_data/service.py)
 ASSETS = {
-    "GOLD":   {"label": "Gold (XAUUSD)", "underlying": "GLD"},
-    "SPX":    {"label": "S&P 500",       "underlying": "SPY"},
-    "NASDAQ": {"label": "Nasdaq 100",    "underlying": "QQQ"},
+    "GOLD":   {"label": "Gold (XAUUSD)", "underlying": "GLD", "spot_symbol": "XAUUSD", "spot_indicator": "gold_futures", "spot_unit": "USD/oz"},
+    "SPX":    {"label": "S&P 500",       "underlying": "SPY", "spot_symbol": "SPX",    "spot_indicator": "spx_close",    "spot_unit": "pts"},
+    "NASDAQ": {"label": "Nasdaq 100",    "underlying": "QQQ", "spot_symbol": "NDX",    "spot_indicator": "ndx_close",    "spot_unit": "pts"},
 }
 TIMEFRAMES = ("weekly", "daily")
 
@@ -223,11 +223,28 @@ def read_gamma_overrides(path: Path) -> dict:
     return {k: v for k, v in data.items() if not k.startswith("_")}
 
 
-def finalize_gamma(g: dict | None, underlying: str) -> dict:
+def read_spot_price(conn, indicator: str) -> float | None:
+    if not table_exists(conn, "raw_data"):
+        return None
+    row = conn.execute(
+        """SELECT value FROM raw_data
+           WHERE indicator = ? AND value IS NOT NULL
+           ORDER BY date DESC, id DESC LIMIT 1""",
+        (indicator,),
+    ).fetchone()
+    if row and row["value"] is not None:
+        try:
+            return float(row["value"])
+        except (ValueError, TypeError):
+            pass
+    return None
+
+
+def finalize_gamma(g: dict | None, underlying: str, spot_meta: dict | None = None, conn=None) -> dict:
     empty = {
         "underlying": underlying, "source": None, "asOf": None, "spot": None,
         "putWall": None, "callWall": None, "gammaFlip": None,
-        "netGex": None, "gammaRegime": None,
+        "netGex": None, "gammaRegime": None, "spotAsset": None,
     }
     if not g:
         return empty
@@ -242,6 +259,24 @@ def finalize_gamma(g: dict | None, underlying: str) -> dict:
         out["gammaRegime"] = "positive" if spot >= flip else "negative"
     elif out.get("netGex") is not None:
         out["gammaRegime"] = "positive" if out["netGex"] >= 0 else "negative"
+
+    # Spot asset conversion (e.g. GLD -> XAUUSD, SPY -> SPX, QQQ -> NDX)
+    if g.get("spotAsset"):
+        out["spotAsset"] = g["spotAsset"]
+    elif spot_meta and conn:
+        spot_val = num(g.get("spot_price")) or read_spot_price(conn, spot_meta.get("spot_indicator"))
+        etf_spot = out.get("spot")
+        if spot_val and etf_spot and etf_spot > 0:
+            ratio = spot_val / etf_spot
+            out["spotAsset"] = {
+                "symbol": spot_meta.get("spot_symbol"),
+                "spot": num(spot_val, 2),
+                "ratio": num(ratio, 4),
+                "unit": spot_meta.get("spot_unit", ""),
+                "putWall": num(out["putWall"] * ratio, 1) if out.get("putWall") is not None else None,
+                "callWall": num(out["callWall"] * ratio, 1) if out.get("callWall") is not None else None,
+                "gammaFlip": num(out["gammaFlip"] * ratio, 1) if out.get("gammaFlip") is not None else None,
+            }
     return out
 
 
@@ -275,7 +310,7 @@ def build(db: Path, overrides_path: Path) -> dict:
                 "weekly": tf["weekly"],
                 "daily": tf["daily"],
                 "divergence": divergence(tf["weekly"], tf["daily"]),
-                "gamma": finalize_gamma(g, meta["underlying"]),
+                "gamma": finalize_gamma(g, meta["underlying"], spot_meta=meta, conn=conn),
             }
     finally:
         conn.close()
