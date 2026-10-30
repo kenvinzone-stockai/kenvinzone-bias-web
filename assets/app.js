@@ -286,7 +286,7 @@
     let ratio = sa && sa.ratio;
     if (!ratio && g.spot) {
       if (state.asset === "GOLD") {
-        ratio = g.spot > 300 ? (4062.0 / 367.82) : 10.85;
+        ratio = (sa && sa.spot) ? (sa.spot / (g.spot || 367.82)) : (g.spot > 300 ? (3981.95 / 367.82) : (3981.95 / (g.spot || 255.75)));
       } else if (state.asset === "SPX") {
         ratio = 10.03;
       } else if (state.asset === "NASDAQ") {
