@@ -155,9 +155,15 @@ def _find_gamma_flip(
     return None
 
 
-def compute_oi_walls(calls: pd.DataFrame, puts: pd.DataFrame, top_n: int = 5) -> dict:
+def compute_oi_walls(
+    calls: pd.DataFrame,
+    puts: pd.DataFrame,
+    top_n: int = 5,
+    spot: Optional[float] = None,
+) -> dict:
     """
     Identify the highest open-interest strikes for calls and puts (option walls).
+    If spot is provided, prioritizes actionable strikes in the near-term trading corridor.
 
     Returns:
         {
@@ -165,13 +171,21 @@ def compute_oi_walls(calls: pd.DataFrame, puts: pd.DataFrame, top_n: int = 5) ->
             "put_walls":  [(strike, oi), ...],
         }
     """
-    def _top_strikes(df: pd.DataFrame) -> list[tuple[float, float]]:
+    def _top_strikes(df: pd.DataFrame, min_ratio: float = 0.5, max_ratio: float = 1.5) -> list[tuple[float, float]]:
         if df.empty or "strike" not in df.columns:
             return []
-        grouped = df.groupby("strike")["openInterest"].sum().sort_values(ascending=False)
+        valid = df.copy()
+        valid["strike_num"] = pd.to_numeric(valid["strike"], errors="coerce")
+        valid["oi_num"] = pd.to_numeric(valid.get("openInterest", 0), errors="coerce").fillna(0)
+        valid = valid.dropna(subset=["strike_num"])
+        if spot and spot > 0:
+            near = valid[valid["strike_num"].between(spot * min_ratio, spot * max_ratio)]
+            if not near.empty and near["oi_num"].sum() > 0:
+                valid = near
+        grouped = valid.groupby("strike_num")["oi_num"].sum().sort_values(ascending=False)
         return [(float(k), float(v)) for k, v in grouped.head(top_n).items()]
 
     return {
-        "call_walls": _top_strikes(calls),
-        "put_walls": _top_strikes(puts),
+        "call_walls": _top_strikes(calls, min_ratio=0.88, max_ratio=1.15),
+        "put_walls":  _top_strikes(puts, min_ratio=0.85, max_ratio=1.12),
     }
