@@ -1,0 +1,21 @@
+{
+  "_note": "Manual spot & gamma overrides. spot_price scales ETF levels directly to MT4/Broker Spot XAUUSD.",
+  "GOLD": {
+    "asOf": "2026-10-30",
+    "spot": 367.82,
+    "putWall": 360.0,
+    "callWall": 375.0,
+    "gammaFlip": 365.0,
+    "netGex": 2500000,
+    "spot_price": 3981.95,
+    "spotAsset": {
+      "symbol": "XAUUSD",
+      "spot": 3981.95,
+      "ratio": 10.8258,
+      "unit": "USD/oz",
+      "putWall": 3897.3,
+      "callWall": 4059.7,
+      "gammaFlip": 3951.4
+    }
+  }
+}
