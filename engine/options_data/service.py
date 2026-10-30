@@ -26,6 +26,78 @@ from plugins.data.flashalpha import FlashAlphaAPIError, FlashAlphaPlugin
 SUPPORTED_SYMBOLS = ("SPY", "QQQ", "GLD")
 
 
+def get_spot_conversion(symbol: str, etf_spot: float | None = None, spot_override: float | None = None) -> dict:
+    """Return spot asset symbol, latest price, and conversion ratio for GLD, SPY, QQQ."""
+    symbol = symbol.upper()
+    asset_map = {
+        "GLD": ("XAUUSD", "gold_futures", 11.0434),
+        "GOLD": ("XAUUSD", "gold_futures", 11.0434),
+        "SPY": ("SPX", "spx_close", 10.03),
+        "SPX": ("SPX", "spx_close", 10.03),
+        "QQQ": ("NDX", "ndx_close", 41.25),
+        "NASDAQ": ("NDX", "ndx_close", 41.25),
+    }
+    if symbol not in asset_map:
+        return {"symbol": symbol, "spot": None, "ratio": 1.0, "unit": ""}
+
+    spot_symbol, indicator, default_ratio = asset_map[symbol]
+    spot_price = None
+
+    if spot_override and float(spot_override) > 0:
+        spot_price = float(spot_override)
+    else:
+        from pathlib import Path
+        import json
+        for ov_path in (
+            Path(__file__).resolve().parent.parent / "data" / "gamma-overrides.json",
+            Path(__file__).resolve().parent.parent / "data" / "gamma_overrides.json",
+        ):
+            if ov_path.exists():
+                try:
+                    ov_data = json.loads(ov_path.read_text(encoding="utf-8"))
+                    entry = ov_data.get(symbol) or ov_data.get(spot_symbol)
+                    if isinstance(entry, dict):
+                        ov_val = entry.get("spot_price") or entry.get("spot") or (entry.get("spotAsset") or {}).get("spot")
+                        if ov_val and float(ov_val) > 0:
+                            spot_price = float(ov_val)
+                            break
+                except Exception:
+                    pass
+
+    if spot_price is None:
+        try:
+            from core.database import get_session
+            from core.models import RawDataPoint
+            with get_session() as session:
+                row = session.execute(
+                    select(RawDataPoint.value)
+                    .where(RawDataPoint.indicator == indicator, RawDataPoint.value.isnot(None))
+                    .order_by(RawDataPoint.date.desc(), RawDataPoint.id.desc())
+                    .limit(1)
+                ).scalar_one_or_none()
+                if row is not None and float(row) > 0:
+                    spot_price = float(row)
+        except Exception:
+            pass
+
+    ratio = default_ratio
+    if spot_price and etf_spot and etf_spot > 0:
+        ratio = spot_price / etf_spot
+
+    return {
+        "symbol": spot_symbol,
+        "spot": spot_price,
+        "ratio": ratio,
+        "unit": "USD/oz" if "XAU" in spot_symbol else "pts",
+    }
+
+
+def to_spot(level: float | None, ratio: float) -> float | None:
+    if level is None:
+        return None
+    return round(float(level) * ratio, 1)
+
+
 class OptionsDataError(RuntimeError):
     """Raised when an options snapshot cannot be fetched or calculated."""
 
@@ -388,12 +460,31 @@ def calculate_expiry_summary(
 
     call_wall = None
     if not calls.empty and call_oi > 0:
-        idx = pd.to_numeric(calls["openInterest"], errors="coerce").fillna(0).idxmax()
-        call_wall = _optional_number(calls.loc[idx, "strike"])
+        c_strikes = pd.to_numeric(calls.get("strike"), errors="coerce")
+        c_oi = pd.to_numeric(calls.get("openInterest"), errors="coerce").fillna(0)
+        # Prioritize actionable strikes within trading corridor (0.88 to 1.15 of spot)
+        if spot and spot > 0:
+            mask = c_strikes.between(spot * 0.88, spot * 1.15) & (c_oi > 0)
+            if mask.any():
+                idx = c_oi[mask].idxmax()
+                call_wall = _optional_number(calls.loc[idx, "strike"])
+        if call_wall is None:
+            idx = c_oi.idxmax()
+            call_wall = _optional_number(calls.loc[idx, "strike"])
+
     put_wall = None
     if not puts.empty and put_oi > 0:
-        idx = pd.to_numeric(puts["openInterest"], errors="coerce").fillna(0).idxmax()
-        put_wall = _optional_number(puts.loc[idx, "strike"])
+        p_strikes = pd.to_numeric(puts.get("strike"), errors="coerce")
+        p_oi = pd.to_numeric(puts.get("openInterest"), errors="coerce").fillna(0)
+        # Prioritize actionable strikes within trading corridor (0.85 to 1.12 of spot)
+        if spot and spot > 0:
+            mask = p_strikes.between(spot * 0.85, spot * 1.12) & (p_oi > 0)
+            if mask.any():
+                idx = p_oi[mask].idxmax()
+                put_wall = _optional_number(puts.loc[idx, "strike"])
+        if put_wall is None:
+            idx = p_oi.idxmax()
+            put_wall = _optional_number(puts.loc[idx, "strike"])
 
     return {
         "days_to_expiration": dte,
