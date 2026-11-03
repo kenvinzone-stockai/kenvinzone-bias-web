@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-03T07:05:43+07:00",
+  "generatedAt": "2026-11-03T10:55:50+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -137,7 +137,7 @@
       },
       "daily": {
         "asOf": "2026-11-03",
-        "computedAt": "2026-11-03 00:05:37.278641",
+        "computedAt": "2026-11-03 03:55:44.720210",
         "score": 0.7,
         "regime": "Neutral",
         "prevScore": 0.7,
@@ -383,7 +383,7 @@
       },
       "daily": {
         "asOf": "2026-11-03",
-        "computedAt": "2026-11-03 00:05:37.266054",
+        "computedAt": "2026-11-03 03:55:44.714319",
         "score": -2.9,
         "regime": "Neutral",
         "prevScore": -2.9,
@@ -626,7 +626,7 @@
       },
       "daily": {
         "asOf": "2026-11-03",
-        "computedAt": "2026-11-03 00:05:37.276822",
+        "computedAt": "2026-11-03 03:55:44.718359",
         "score": 0.9,
         "regime": "Neutral",
         "prevScore": 0.9,
