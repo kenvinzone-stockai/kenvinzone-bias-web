@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-06T10:26:36+07:00",
+  "generatedAt": "2026-11-06T13:21:31+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -738,26 +738,26 @@
       "gamma": {
         "underlying": "QQQ",
         "source": "mbp_engine",
-        "asOf": "2026-11-05",
-        "spot": 647.05,
-        "putWall": 713.0,
-        "callWall": 705.0,
-        "gammaFlip": 704.49,
-        "netGex": -861049122.0,
+        "asOf": "2026-11-03",
+        "spot": 685.28,
+        "putWall": 685.0,
+        "callWall": 710.0,
+        "gammaFlip": 696.96,
+        "netGex": -344473678.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "NDX",
           "spot": 26629.81,
-          "ratio": 41.1557,
+          "ratio": 38.8597,
           "unit": "pts",
-          "putWall": 29344.0,
-          "callWall": 29014.8,
-          "gammaFlip": 28993.8
+          "putWall": 26618.9,
+          "callWall": 27590.4,
+          "gammaFlip": 27083.7
         },
-        "expiration": "2026-11-06",
-        "maxPain": 710.0,
-        "expectedMove": 10.78,
-        "putCallOiRatio": 1.249
+        "expiration": "2026-11-04",
+        "maxPain": 695.0,
+        "expectedMove": 13.12,
+        "putCallOiRatio": 2.078
       }
     }
   }
