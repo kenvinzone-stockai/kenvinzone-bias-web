@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-07T07:05:41+07:00",
+  "generatedAt": "2026-11-08T07:06:52+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -136,12 +136,12 @@
         ]
       },
       "daily": {
-        "asOf": "2026-11-07",
-        "computedAt": "2026-11-07 00:05:35.991446",
-        "score": 10.7,
-        "regime": "Bullish",
+        "asOf": "2026-11-08",
+        "computedAt": "2026-11-08 00:06:47.609870",
+        "score": 4.6,
+        "regime": "Neutral",
         "prevScore": 10.7,
-        "scoreChange": -0.0,
+        "scoreChange": -6.1,
         "prevRegime": "Bullish",
         "dataCoverage": 0.905,
         "frameworkVersion": 1,
@@ -153,10 +153,16 @@
             "contribution": 8.35
           },
           {
+            "key": "usd",
+            "weight": 0.1778,
+            "rawScore": -24.8,
+            "contribution": -4.4
+          },
+          {
             "key": "risk",
             "weight": 0.0667,
-            "rawScore": 43.4,
-            "contribution": 2.89
+            "rawScore": 39.6,
+            "contribution": 2.64
           },
           {
             "key": "liquidity",
@@ -165,40 +171,34 @@
             "contribution": 2.24
           },
           {
+            "key": "flows",
+            "weight": 0.1333,
+            "rawScore": -16.2,
+            "contribution": -2.15
+          },
+          {
             "key": "positioning",
             "weight": 0.1333,
             "rawScore": -12.4,
             "contribution": -1.66
           },
           {
-            "key": "flows",
+            "key": "gold_specific",
             "weight": 0.1333,
-            "rawScore": -9.6,
-            "contribution": -1.28
+            "rawScore": -9.0,
+            "contribution": -1.2
           },
           {
             "key": "options",
             "weight": 0.0667,
-            "rawScore": 17.4,
-            "contribution": 1.16
-          },
-          {
-            "key": "gold_specific",
-            "weight": 0.1333,
-            "rawScore": -8.0,
-            "contribution": -1.07
-          },
-          {
-            "key": "usd",
-            "weight": 0.1778,
-            "rawScore": 1.2,
-            "contribution": 0.2
+            "rawScore": 9.1,
+            "contribution": 0.61
           },
           {
             "key": "breadth",
             "weight": 0.0222,
-            "rawScore": -6.3,
-            "contribution": -0.14
+            "rawScore": 6.3,
+            "contribution": 0.14
           }
         ],
         "topPositive": [
@@ -216,40 +216,40 @@
           },
           {
             "name": "vix",
-            "contribution": 1.63
+            "contribution": 1.51
           },
           {
             "name": "gold_silver_ratio",
-            "contribution": 1.28
+            "contribution": 1.23
           }
         ],
         "topNegative": [
+          {
+            "name": "usd_directional_pressure",
+            "contribution": -4.4
+          },
           {
             "name": "cot_gold_trend",
             "contribution": -1.66
           },
           {
             "name": "gold_spx_divergence",
-            "contribution": -0.94
+            "contribution": -1.02
           },
           {
             "name": "gld_momentum",
-            "contribution": -0.85
-          },
-          {
-            "name": "comex_open_interest",
-            "contribution": -0.76
+            "contribution": -0.93
           },
           {
             "name": "gold_futures_momentum",
-            "contribution": -0.72
+            "contribution": -0.76
           }
         ]
       },
       "divergence": {
         "status": "ALIGNED",
         "weeklyScore": 8.7,
-        "dailyScore": 10.7,
+        "dailyScore": 4.6,
         "rule": "DIVERGENCE when weekly and daily scores have opposite signs"
       },
       "gamma": {
@@ -382,12 +382,12 @@
         ]
       },
       "daily": {
-        "asOf": "2026-11-07",
-        "computedAt": "2026-11-07 00:05:35.977558",
-        "score": -5.5,
+        "asOf": "2026-11-08",
+        "computedAt": "2026-11-08 00:06:47.603166",
+        "score": -5.3,
         "regime": "Neutral",
         "prevScore": -5.5,
-        "scoreChange": 0.0,
+        "scoreChange": 0.1,
         "prevRegime": "Neutral",
         "dataCoverage": 0.889,
         "frameworkVersion": 1,
@@ -395,8 +395,8 @@
           {
             "key": "risk",
             "weight": 0.125,
-            "rawScore": -40.4,
-            "contribution": -5.05
+            "rawScore": -34.0,
+            "contribution": -4.25
           },
           {
             "key": "rates",
@@ -405,22 +405,16 @@
             "contribution": 3.37
           },
           {
+            "key": "usd",
+            "weight": 0.125,
+            "rawScore": -17.0,
+            "contribution": -2.13
+          },
+          {
             "key": "options",
             "weight": 0.125,
-            "rawScore": -19.8,
-            "contribution": -2.47
-          },
-          {
-            "key": "flows",
-            "weight": 0.125,
-            "rawScore": -12.6,
-            "contribution": -1.57
-          },
-          {
-            "key": "breadth",
-            "weight": 0.125,
-            "rawScore": 8.4,
-            "contribution": 1.05
+            "rawScore": -12.9,
+            "contribution": -1.61
           },
           {
             "key": "liquidity",
@@ -429,10 +423,16 @@
             "contribution": -0.91
           },
           {
-            "key": "usd",
+            "key": "breadth",
             "weight": 0.125,
-            "rawScore": 0.8,
-            "contribution": 0.1
+            "rawScore": 2.3,
+            "contribution": 0.28
+          },
+          {
+            "key": "flows",
+            "weight": 0.125,
+            "rawScore": -0.8,
+            "contribution": -0.1
           },
           {
             "key": "positioning",
@@ -452,44 +452,44 @@
           },
           {
             "name": "pct_above_200ma",
-            "contribution": 0.7
+            "contribution": 0.48
+          },
+          {
+            "name": "spy_signed_turnover_proxy",
+            "contribution": 0.43
           },
           {
             "name": "yield_curve_2y10y",
             "contribution": 0.35
-          },
-          {
-            "name": "tlt_relative_momentum",
-            "contribution": 0.34
           }
         ],
         "topNegative": [
           {
-            "name": "vix",
-            "contribution": -1.88
+            "name": "usd_directional_pressure",
+            "contribution": -2.13
           },
           {
             "name": "ig_oas",
             "contribution": -1.42
           },
           {
+            "name": "vix",
+            "contribution": -1.39
+          },
+          {
             "name": "hy_oas",
             "contribution": -1.35
           },
           {
-            "name": "spy_gamma_flip",
-            "contribution": -1.35
-          },
-          {
             "name": "spy_return_momentum_4w",
-            "contribution": -1.29
+            "contribution": -1.15
           }
         ]
       },
       "divergence": {
         "status": "ALIGNED",
         "weeklyScore": -3.3,
-        "dailyScore": -5.5,
+        "dailyScore": -5.3,
         "rule": "DIVERGENCE when weekly and daily scores have opposite signs"
       },
       "gamma": {
@@ -499,17 +499,17 @@
         "spot": 735.29,
         "putWall": 725.0,
         "callWall": 770.0,
-        "gammaFlip": 748.89,
-        "netGex": -757217770.0,
+        "gammaFlip": 750.62,
+        "netGex": -707436217.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "SPX",
-          "spot": 7353.73,
-          "ratio": 10.0011,
+          "spot": 7376.86,
+          "ratio": 10.0326,
           "unit": "pts",
-          "putWall": 7250.8,
-          "callWall": 7700.9,
-          "gammaFlip": 7489.7
+          "putWall": 7273.6,
+          "callWall": 7725.1,
+          "gammaFlip": 7530.7
         },
         "expiration": "2026-11-09",
         "maxPain": 750.0,
@@ -625,12 +625,12 @@
         ]
       },
       "daily": {
-        "asOf": "2026-11-07",
-        "computedAt": "2026-11-07 00:05:35.983731",
-        "score": -3.5,
+        "asOf": "2026-11-08",
+        "computedAt": "2026-11-08 00:06:47.607393",
+        "score": -1.0,
         "regime": "Neutral",
         "prevScore": -3.5,
-        "scoreChange": -0.0,
+        "scoreChange": 2.5,
         "prevRegime": "Neutral",
         "dataCoverage": 0.864,
         "frameworkVersion": 1,
@@ -644,20 +644,20 @@
           {
             "key": "risk",
             "weight": 0.1212,
-            "rawScore": -40.3,
-            "contribution": -4.88
+            "rawScore": -30.9,
+            "contribution": -3.75
+          },
+          {
+            "key": "usd",
+            "weight": 0.1212,
+            "rawScore": -19.3,
+            "contribution": -2.34
           },
           {
             "key": "flows",
             "weight": 0.1212,
-            "rawScore": -33.5,
-            "contribution": -4.06
-          },
-          {
-            "key": "options",
-            "weight": 0.1212,
-            "rawScore": -17.9,
-            "contribution": -2.17
+            "rawScore": -10.4,
+            "contribution": -1.26
           },
           {
             "key": "positioning",
@@ -666,22 +666,22 @@
             "contribution": -1.11
           },
           {
-            "key": "breadth",
-            "weight": 0.0909,
-            "rawScore": 11.5,
-            "contribution": 1.05
-          },
-          {
             "key": "liquidity",
             "weight": 0.1212,
             "rawScore": -5.2,
             "contribution": -0.63
           },
           {
-            "key": "usd",
+            "key": "options",
             "weight": 0.1212,
-            "rawScore": 0.9,
-            "contribution": 0.11
+            "rawScore": -2.4,
+            "contribution": -0.29
+          },
+          {
+            "key": "breadth",
+            "weight": 0.0909,
+            "rawScore": 2.6,
+            "contribution": 0.24
           }
         ],
         "topPositive": [
@@ -698,41 +698,41 @@
             "contribution": 1.79
           },
           {
-            "name": "pct_above_200ma",
-            "contribution": 0.76
+            "name": "qqq_signed_turnover_proxy",
+            "contribution": 0.83
           },
           {
-            "name": "yield_curve_2y10y",
-            "contribution": 0.51
+            "name": "pct_above_200ma",
+            "contribution": 0.53
           }
         ],
         "topNegative": [
           {
+            "name": "usd_directional_pressure",
+            "contribution": -2.34
+          },
+          {
             "name": "vxn",
-            "contribution": -3.03
+            "contribution": -2.3
           },
           {
             "name": "qqq_return_momentum_4w",
-            "contribution": -2.33
-          },
-          {
-            "name": "qqq_gex",
-            "contribution": -2.17
+            "contribution": -1.95
           },
           {
             "name": "hy_oas",
             "contribution": -1.64
           },
           {
-            "name": "qqq_signed_turnover_proxy",
-            "contribution": -1.45
+            "name": "cot_nasdaq_asset_mgr",
+            "contribution": -1.11
           }
         ]
       },
       "divergence": {
         "status": "ALIGNED",
         "weeklyScore": -7.1,
-        "dailyScore": -3.5,
+        "dailyScore": -1.0,
         "rule": "DIVERGENCE when weekly and daily scores have opposite signs"
       },
       "gamma": {
@@ -742,17 +742,17 @@
         "spot": 656.1,
         "putWall": 630.0,
         "callWall": 700.0,
-        "gammaFlip": 661.06,
-        "netGex": -75196818.0,
+        "gammaFlip": 660.84,
+        "netGex": -57307197.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "NDX",
-          "spot": 26629.81,
-          "ratio": 40.588,
+          "spot": 26989.99,
+          "ratio": 41.137,
           "unit": "pts",
-          "putWall": 25570.5,
-          "callWall": 28411.6,
-          "gammaFlip": 26831.1
+          "putWall": 25916.3,
+          "callWall": 28795.9,
+          "gammaFlip": 27185.0
         },
         "expiration": "2026-11-09",
         "maxPain": 665.0,
