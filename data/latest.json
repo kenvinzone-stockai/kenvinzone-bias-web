@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-10T11:38:00+07:00",
+  "generatedAt": "2026-11-10T14:02:50+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -137,7 +137,7 @@
       },
       "daily": {
         "asOf": "2026-11-10",
-        "computedAt": "2026-11-10 04:37:54.825280",
+        "computedAt": "2026-11-10 07:02:46.771076",
         "score": 6.1,
         "regime": "Neutral",
         "prevScore": 6.1,
@@ -383,7 +383,7 @@
       },
       "daily": {
         "asOf": "2026-11-10",
-        "computedAt": "2026-11-10 04:37:54.816700",
+        "computedAt": "2026-11-10 07:02:46.763887",
         "score": -5.0,
         "regime": "Neutral",
         "prevScore": -5.0,
@@ -495,26 +495,26 @@
       "gamma": {
         "underlying": "SPY",
         "source": "mbp_engine",
-        "asOf": "2026-11-09",
-        "spot": 752.69,
-        "putWall": 734.0,
-        "callWall": 740.0,
-        "gammaFlip": 736.4,
-        "netGex": 780896423.0,
-        "gammaRegime": "positive",
+        "asOf": "2026-11-06",
+        "spot": 735.29,
+        "putWall": 725.0,
+        "callWall": 770.0,
+        "gammaFlip": 748.27,
+        "netGex": -566647441.0,
+        "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "SPX",
           "spot": 7376.86,
-          "ratio": 9.8007,
+          "ratio": 10.0326,
           "unit": "pts",
-          "putWall": 7193.7,
-          "callWall": 7252.5,
-          "gammaFlip": 7217.2
+          "putWall": 7273.6,
+          "callWall": 7725.1,
+          "gammaFlip": 7507.1
         },
-        "expiration": "2026-11-10",
-        "maxPain": 740.0,
-        "expectedMove": 6.08,
-        "putCallOiRatio": 0.69
+        "expiration": "2026-11-09",
+        "maxPain": 747.0,
+        "expectedMove": 9.54,
+        "putCallOiRatio": 1.875
       }
     },
     "NASDAQ": {
@@ -626,7 +626,7 @@
       },
       "daily": {
         "asOf": "2026-11-10",
-        "computedAt": "2026-11-10 04:37:54.823029",
+        "computedAt": "2026-11-10 07:02:46.768645",
         "score": -0.2,
         "regime": "Neutral",
         "prevScore": -0.2,
@@ -738,26 +738,26 @@
       "gamma": {
         "underlying": "QQQ",
         "source": "mbp_engine",
-        "asOf": "2026-11-09",
-        "spot": 679.35,
-        "putWall": 640.0,
-        "callWall": 710.0,
-        "gammaFlip": 664.75,
-        "netGex": 209535386.0,
+        "asOf": "2026-11-06",
+        "spot": 656.1,
+        "putWall": 630.0,
+        "callWall": 700.0,
+        "gammaFlip": 653.61,
+        "netGex": 26220130.0,
         "gammaRegime": "positive",
         "spotAsset": {
           "symbol": "NDX",
           "spot": 26989.99,
-          "ratio": 39.7291,
+          "ratio": 41.137,
           "unit": "pts",
-          "putWall": 25426.6,
-          "callWall": 28207.7,
-          "gammaFlip": 26409.9
+          "putWall": 25916.3,
+          "callWall": 28795.9,
+          "gammaFlip": 26887.6
         },
-        "expiration": "2026-11-10",
-        "maxPain": 667.0,
-        "expectedMove": 8.52,
-        "putCallOiRatio": 0.662
+        "expiration": "2026-11-09",
+        "maxPain": 663.0,
+        "expectedMove": 12.68,
+        "putCallOiRatio": 1.037
       }
     }
   }
