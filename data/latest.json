@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-12T14:38:01+07:00",
+  "generatedAt": "2026-11-13T07:08:06+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -25,150 +25,156 @@
     "GOLD": {
       "label": "Gold (XAUUSD)",
       "weekly": {
-        "asOf": "2026-11-09",
-        "computedAt": "2026-11-09 00:07:05.609631",
-        "score": 5.9,
-        "regime": "Neutral",
-        "prevScore": 8.7,
-        "scoreChange": -2.8,
-        "prevRegime": "Bullish",
+        "asOf": "2026-11-13",
+        "computedAt": "2026-11-13 00:08:01.086872",
+        "score": -12.9,
+        "regime": "Bearish",
+        "prevScore": 5.9,
+        "scoreChange": -18.8,
+        "prevRegime": "Neutral",
         "dataCoverage": 0.952,
         "frameworkVersion": 1,
         "categories": [
           {
-            "key": "rates",
-            "weight": 0.1778,
-            "rawScore": 43.3,
-            "contribution": 7.69
-          },
-          {
             "key": "usd",
             "weight": 0.1778,
-            "rawScore": -24.4,
-            "contribution": -4.34
-          },
-          {
-            "key": "risk",
-            "weight": 0.0667,
-            "rawScore": 39.2,
-            "contribution": 2.61
-          },
-          {
-            "key": "liquidity",
-            "weight": 0.0889,
-            "rawScore": 22.3,
-            "contribution": 1.98
+            "rawScore": -57.4,
+            "contribution": -10.2
           },
           {
             "key": "flows",
             "weight": 0.1333,
-            "rawScore": -14.7,
-            "contribution": -1.96
+            "rawScore": -27.9,
+            "contribution": -3.72
+          },
+          {
+            "key": "liquidity",
+            "weight": 0.0889,
+            "rawScore": 29.2,
+            "contribution": 2.59
           },
           {
             "key": "gold_specific",
             "weight": 0.1333,
-            "rawScore": -5.8,
-            "contribution": -0.78
+            "rawScore": -12.8,
+            "contribution": -1.71
+          },
+          {
+            "key": "risk",
+            "weight": 0.0667,
+            "rawScore": 19.7,
+            "contribution": 1.31
           },
           {
             "key": "options",
             "weight": 0.0667,
-            "rawScore": 10.4,
-            "contribution": 0.69
-          },
-          {
-            "key": "breadth",
-            "weight": 0.0222,
-            "rawScore": 6.0,
-            "contribution": 0.13
+            "rawScore": -16.3,
+            "contribution": -1.09
           },
           {
             "key": "positioning",
             "weight": 0.1333,
             "rawScore": -0.7,
             "contribution": -0.1
+          },
+          {
+            "key": "rates",
+            "weight": 0.1778,
+            "rawScore": 0.4,
+            "contribution": 0.08
+          },
+          {
+            "key": "breadth",
+            "weight": 0.0222,
+            "rawScore": -1.1,
+            "contribution": -0.02
           }
         ],
         "topPositive": [
-          {
-            "name": "us_10y_real_yield",
-            "contribution": 4.54
-          },
-          {
-            "name": "us_5y_real_yield",
-            "contribution": 3.15
-          },
           {
             "name": "us_m2",
             "contribution": 2.01
           },
           {
-            "name": "vix",
-            "contribution": 1.41
+            "name": "gold_silver_ratio",
+            "contribution": 1.19
           },
           {
-            "name": "gold_silver_ratio",
-            "contribution": 1.27
+            "name": "net_liquidity_zscore",
+            "contribution": 0.58
+          },
+          {
+            "name": "hy_oas",
+            "contribution": 0.55
+          },
+          {
+            "name": "move_index",
+            "contribution": 0.5
           }
         ],
         "topNegative": [
           {
             "name": "usd_directional_pressure",
-            "contribution": -4.34
+            "contribution": -10.2
           },
           {
             "name": "gold_spx_divergence",
-            "contribution": -1.06
+            "contribution": -1.72
           },
           {
             "name": "gld_momentum",
-            "contribution": -0.95
+            "contribution": -1.38
           },
           {
             "name": "gold_futures_momentum",
-            "contribution": -0.81
+            "contribution": -1.13
           },
           {
-            "name": "copper_gold_ratio",
-            "contribution": -0.75
+            "name": "gld_gex",
+            "contribution": -1.09
           }
         ]
       },
       "daily": {
-        "asOf": "2026-11-12",
-        "computedAt": "2026-11-12 07:37:58.232739",
-        "score": -2.2,
-        "regime": "Neutral",
+        "asOf": "2026-11-13",
+        "computedAt": "2026-11-13 00:08:00.170259",
+        "score": -11.4,
+        "regime": "Bearish",
         "prevScore": 0.6,
-        "scoreChange": -2.8,
+        "scoreChange": -12.0,
         "prevRegime": "Neutral",
         "dataCoverage": 0.905,
         "frameworkVersion": 1,
         "categories": [
           {
-            "key": "rates",
-            "weight": 0.1778,
-            "rawScore": 34.0,
-            "contribution": 6.05
-          },
-          {
             "key": "usd",
             "weight": 0.1778,
-            "rawScore": -31.4,
-            "contribution": -5.58
+            "rawScore": -63.3,
+            "contribution": -11.25
+          },
+          {
+            "key": "rates",
+            "weight": 0.1778,
+            "rawScore": 22.5,
+            "contribution": 4.0
           },
           {
             "key": "flows",
             "weight": 0.1333,
-            "rawScore": -18.8,
-            "contribution": -2.51
+            "rawScore": -26.7,
+            "contribution": -3.56
           },
           {
             "key": "liquidity",
             "weight": 0.0889,
-            "rawScore": 24.9,
-            "contribution": 2.21
+            "rawScore": 32.4,
+            "contribution": 2.88
+          },
+          {
+            "key": "gold_specific",
+            "weight": 0.1333,
+            "rawScore": -16.7,
+            "contribution": -2.23
           },
           {
             "key": "positioning",
@@ -179,32 +185,26 @@
           {
             "key": "risk",
             "weight": 0.0667,
-            "rawScore": 24.0,
-            "contribution": 1.6
-          },
-          {
-            "key": "gold_specific",
-            "weight": 0.1333,
-            "rawScore": -11.9,
-            "contribution": -1.58
-          },
-          {
-            "key": "breadth",
-            "weight": 0.0222,
-            "rawScore": -17.0,
-            "contribution": -0.38
+            "rawScore": 23.5,
+            "contribution": 1.57
           },
           {
             "key": "options",
             "weight": 0.0667,
-            "rawScore": -5.1,
-            "contribution": -0.34
+            "rawScore": -16.3,
+            "contribution": -1.09
+          },
+          {
+            "key": "breadth",
+            "weight": 0.0222,
+            "rawScore": -1.2,
+            "contribution": -0.03
           }
         ],
         "topPositive": [
           {
             "name": "us_10y_real_yield",
-            "contribution": 3.78
+            "contribution": 2.47
           },
           {
             "name": "us_m2",
@@ -212,44 +212,44 @@
           },
           {
             "name": "us_5y_real_yield",
-            "contribution": 2.27
+            "contribution": 1.53
           },
           {
             "name": "gold_silver_ratio",
-            "contribution": 1.22
+            "contribution": 1.15
           },
           {
             "name": "hy_oas",
-            "contribution": 0.73
+            "contribution": 0.66
           }
         ],
         "topNegative": [
           {
             "name": "usd_directional_pressure",
-            "contribution": -5.58
+            "contribution": -11.25
+          },
+          {
+            "name": "gold_spx_divergence",
+            "contribution": -1.71
           },
           {
             "name": "cot_gold_trend",
             "contribution": -1.66
           },
           {
-            "name": "gold_spx_divergence",
-            "contribution": -1.3
-          },
-          {
             "name": "gld_momentum",
-            "contribution": -1.01
+            "contribution": -1.38
           },
           {
             "name": "gold_futures_momentum",
-            "contribution": -0.81
+            "contribution": -1.11
           }
         ]
       },
       "divergence": {
-        "status": "DIVERGENCE",
-        "weeklyScore": 5.9,
-        "dailyScore": -2.2,
+        "status": "ALIGNED",
+        "weeklyScore": -12.9,
+        "dailyScore": -11.4,
         "rule": "DIVERGENCE when weekly and daily scores have opposite signs"
       },
       "gamma": {
@@ -277,39 +277,51 @@
     "SPX": {
       "label": "S&P 500",
       "weekly": {
-        "asOf": "2026-11-09",
-        "computedAt": "2026-11-09 00:07:05.605047",
-        "score": -3.4,
+        "asOf": "2026-11-13",
+        "computedAt": "2026-11-13 00:08:01.081404",
+        "score": -2.9,
         "regime": "Neutral",
-        "prevScore": -3.3,
-        "scoreChange": -0.1,
+        "prevScore": -3.4,
+        "scoreChange": 0.5,
         "prevRegime": "Neutral",
         "dataCoverage": 0.926,
         "frameworkVersion": 1,
         "categories": [
           {
-            "key": "risk",
-            "weight": 0.125,
-            "rawScore": -34.0,
-            "contribution": -4.25
-          },
-          {
-            "key": "rates",
-            "weight": 0.125,
-            "rawScore": 24.8,
-            "contribution": 3.1
-          },
-          {
             "key": "usd",
             "weight": 0.125,
-            "rawScore": -16.8,
-            "contribution": -2.1
+            "rawScore": -39.4,
+            "contribution": -4.93
+          },
+          {
+            "key": "risk",
+            "weight": 0.125,
+            "rawScore": -13.4,
+            "contribution": -1.68
           },
           {
             "key": "options",
             "weight": 0.125,
-            "rawScore": -10.9,
-            "contribution": -1.36
+            "rawScore": -12.0,
+            "contribution": -1.5
+          },
+          {
+            "key": "liquidity",
+            "weight": 0.125,
+            "rawScore": 10.5,
+            "contribution": 1.31
+          },
+          {
+            "key": "breadth",
+            "weight": 0.125,
+            "rawScore": 9.3,
+            "contribution": 1.16
+          },
+          {
+            "key": "flows",
+            "weight": 0.125,
+            "rawScore": 8.9,
+            "contribution": 1.11
           },
           {
             "key": "positioning",
@@ -318,22 +330,10 @@
             "contribution": 1.02
           },
           {
-            "key": "flows",
+            "key": "rates",
             "weight": 0.125,
-            "rawScore": -4.5,
-            "contribution": -0.56
-          },
-          {
-            "key": "liquidity",
-            "weight": 0.125,
-            "rawScore": 3.7,
-            "contribution": 0.47
-          },
-          {
-            "key": "breadth",
-            "weight": 0.125,
-            "rawScore": 2.4,
-            "contribution": 0.3
+            "rawScore": 5.1,
+            "contribution": 0.64
           }
         ],
         "topPositive": [
@@ -342,97 +342,97 @@
             "contribution": 1.68
           },
           {
-            "name": "us_10y_yield",
-            "contribution": 1.58
-          },
-          {
-            "name": "us_10y_real_yield",
-            "contribution": 1.48
+            "name": "pct_above_200ma",
+            "contribution": 0.97
           },
           {
             "name": "fed_balance_sheet",
-            "contribution": 0.75
+            "contribution": 0.84
           },
           {
-            "name": "pct_above_200ma",
-            "contribution": 0.48
+            "name": "tlt_relative_momentum",
+            "contribution": 0.77
+          },
+          {
+            "name": "spy_momentum",
+            "contribution": 0.58
           }
         ],
         "topNegative": [
           {
             "name": "usd_directional_pressure",
-            "contribution": -2.1
+            "contribution": -4.93
           },
           {
-            "name": "hy_oas",
-            "contribution": -1.54
+            "name": "spy_gex",
+            "contribution": -1.12
           },
           {
             "name": "ig_oas",
-            "contribution": -1.47
+            "contribution": -1.07
           },
           {
-            "name": "vix",
-            "contribution": -1.15
+            "name": "hy_oas",
+            "contribution": -1.03
           },
           {
-            "name": "spy_return_momentum_4w",
-            "contribution": -1.11
+            "name": "cot_spx_asset_mgr",
+            "contribution": -0.66
           }
         ]
       },
       "daily": {
-        "asOf": "2026-11-12",
-        "computedAt": "2026-11-12 07:37:58.228313",
-        "score": -1.3,
+        "asOf": "2026-11-13",
+        "computedAt": "2026-11-13 00:08:00.164796",
+        "score": -5.2,
         "regime": "Neutral",
         "prevScore": -2.5,
-        "scoreChange": 1.2,
+        "scoreChange": -2.7,
         "prevRegime": "Neutral",
-        "dataCoverage": 0.852,
+        "dataCoverage": 0.889,
         "frameworkVersion": 1,
         "categories": [
           {
-            "key": "rates",
-            "weight": 0.125,
-            "rawScore": 33.4,
-            "contribution": 4.18
-          },
-          {
             "key": "usd",
             "weight": 0.125,
-            "rawScore": -21.6,
-            "contribution": -2.7
+            "rawScore": -43.5,
+            "contribution": -5.44
+          },
+          {
+            "key": "rates",
+            "weight": 0.125,
+            "rawScore": 17.4,
+            "contribution": 2.17
           },
           {
             "key": "risk",
             "weight": 0.125,
-            "rawScore": -21.6,
-            "contribution": -2.7
-          },
-          {
-            "key": "breadth",
-            "weight": 0.125,
-            "rawScore": 18.2,
-            "contribution": 2.28
+            "rawScore": -16.7,
+            "contribution": -2.09
           },
           {
             "key": "options",
             "weight": 0.125,
-            "rawScore": -10.4,
-            "contribution": -1.31
+            "rawScore": -12.0,
+            "contribution": -1.5
           },
           {
-            "key": "liquidity",
+            "key": "breadth",
             "weight": 0.125,
-            "rawScore": -7.8,
-            "contribution": -0.97
+            "rawScore": 9.3,
+            "contribution": 1.16
           },
           {
             "key": "flows",
             "weight": 0.125,
-            "rawScore": -1.0,
-            "contribution": -0.13
+            "rawScore": 4.8,
+            "contribution": 0.6
+          },
+          {
+            "key": "liquidity",
+            "weight": 0.125,
+            "rawScore": -0.7,
+            "contribution": -0.09
           },
           {
             "key": "positioning",
@@ -444,97 +444,97 @@
         "topPositive": [
           {
             "name": "us_10y_yield",
-            "contribution": 2.07
-          },
-          {
-            "name": "us_10y_real_yield",
-            "contribution": 1.64
+            "contribution": 1.19
           },
           {
             "name": "pct_above_200ma",
-            "contribution": 1.05
+            "contribution": 0.97
           },
           {
-            "name": "mcclellan_oscillator",
-            "contribution": 0.71
+            "name": "us_10y_real_yield",
+            "contribution": 0.8
           },
           {
             "name": "tlt_relative_momentum",
-            "contribution": 0.55
+            "contribution": 0.79
+          },
+          {
+            "name": "spy_momentum",
+            "contribution": 0.59
           }
         ],
         "topNegative": [
           {
             "name": "usd_directional_pressure",
-            "contribution": -2.7
-          },
-          {
-            "name": "ig_oas",
-            "contribution": -1.37
+            "contribution": -5.44
           },
           {
             "name": "hy_oas",
-            "contribution": -1.36
+            "contribution": -1.23
+          },
+          {
+            "name": "ig_oas",
+            "contribution": -1.23
           },
           {
             "name": "spy_gex",
-            "contribution": -0.99
+            "contribution": -1.12
           },
           {
             "name": "spy_return_momentum_4w",
-            "contribution": -0.88
+            "contribution": -0.51
           }
         ]
       },
       "divergence": {
         "status": "ALIGNED",
-        "weeklyScore": -3.4,
-        "dailyScore": -1.3,
+        "weeklyScore": -2.9,
+        "dailyScore": -5.2,
         "rule": "DIVERGENCE when weekly and daily scores have opposite signs"
       },
       "gamma": {
         "underlying": "SPY",
         "source": "mbp_engine",
-        "asOf": "2026-11-10",
-        "spot": 749.92,
-        "putWall": 720.0,
-        "callWall": 770.0,
-        "gammaFlip": 752.44,
-        "netGex": -238087891.0,
+        "asOf": "2026-11-12",
+        "spot": 757.12,
+        "putWall": 760.0,
+        "callWall": 776.0,
+        "gammaFlip": 761.61,
+        "netGex": -1968728775.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "SPX",
-          "spot": 7520.93,
-          "ratio": 10.029,
+          "spot": 7592.4,
+          "ratio": 10.028,
           "unit": "pts",
-          "putWall": 7220.9,
-          "callWall": 7722.3,
-          "gammaFlip": 7546.2
+          "putWall": 7621.3,
+          "callWall": 7781.7,
+          "gammaFlip": 7637.4
         },
-        "expiration": "2026-11-11",
-        "maxPain": 750.0,
-        "expectedMove": 5.0,
-        "putCallOiRatio": 1.257
+        "expiration": "2026-11-13",
+        "maxPain": 758.0,
+        "expectedMove": 5.66,
+        "putCallOiRatio": 1.514
       }
     },
     "NASDAQ": {
       "label": "Nasdaq 100",
       "weekly": {
-        "asOf": "2026-11-09",
-        "computedAt": "2026-11-09 00:07:05.607623",
-        "score": -4.9,
-        "regime": "Neutral",
-        "prevScore": -7.1,
-        "scoreChange": 2.3,
-        "prevRegime": "Bearish",
+        "asOf": "2026-11-13",
+        "computedAt": "2026-11-13 00:08:01.084485",
+        "score": -10.9,
+        "regime": "Bearish",
+        "prevScore": -4.9,
+        "scoreChange": -6.1,
+        "prevRegime": "Neutral",
         "dataCoverage": 0.909,
         "frameworkVersion": 1,
         "categories": [
           {
-            "key": "rates",
-            "weight": 0.1818,
-            "rawScore": 41.1,
-            "contribution": 7.47
+            "key": "usd",
+            "weight": 0.1212,
+            "rawScore": -44.8,
+            "contribution": -5.43
           },
           {
             "key": "positioning",
@@ -545,125 +545,125 @@
           {
             "key": "risk",
             "weight": 0.1212,
-            "rawScore": -30.3,
-            "contribution": -3.67
-          },
-          {
-            "key": "usd",
-            "weight": 0.1212,
-            "rawScore": -19.1,
-            "contribution": -2.31
-          },
-          {
-            "key": "flows",
-            "weight": 0.1212,
-            "rawScore": -17.0,
-            "contribution": -2.06
-          },
-          {
-            "key": "liquidity",
-            "weight": 0.1212,
-            "rawScore": -3.0,
-            "contribution": -0.37
-          },
-          {
-            "key": "breadth",
-            "weight": 0.0909,
-            "rawScore": 2.8,
-            "contribution": 0.25
+            "rawScore": -20.4,
+            "contribution": -2.47
           },
           {
             "key": "options",
             "weight": 0.1212,
-            "rawScore": 2.0,
-            "contribution": 0.24
+            "rawScore": -11.6,
+            "contribution": -1.4
+          },
+          {
+            "key": "rates",
+            "weight": 0.1818,
+            "rawScore": 6.3,
+            "contribution": 1.14
+          },
+          {
+            "key": "breadth",
+            "weight": 0.0909,
+            "rawScore": 12.2,
+            "contribution": 1.11
+          },
+          {
+            "key": "liquidity",
+            "weight": 0.1212,
+            "rawScore": 5.1,
+            "contribution": 0.62
+          },
+          {
+            "key": "flows",
+            "weight": 0.1212,
+            "rawScore": -0.6,
+            "contribution": -0.07
           }
         ],
         "topPositive": [
           {
-            "name": "us_10y_real_yield",
-            "contribution": 2.76
+            "name": "pct_above_200ma",
+            "contribution": 1.05
           },
           {
             "name": "us_10y_nominal_yield",
-            "contribution": 2.3
-          },
-          {
-            "name": "us_5y_real_yield",
-            "contribution": 1.82
-          },
-          {
-            "name": "yield_curve_2y10y",
-            "contribution": 0.6
+            "contribution": 0.74
           },
           {
             "name": "on_rrp",
-            "contribution": 0.57
+            "contribution": 0.54
+          },
+          {
+            "name": "net_liquidity_zscore",
+            "contribution": 0.53
+          },
+          {
+            "name": "usdjpy_carry",
+            "contribution": 0.45
           }
         ],
         "topNegative": [
+          {
+            "name": "usd_directional_pressure",
+            "contribution": -5.43
+          },
           {
             "name": "cot_nasdaq_leveraged",
             "contribution": -3.14
           },
           {
-            "name": "usd_directional_pressure",
-            "contribution": -2.31
+            "name": "qqq_gex",
+            "contribution": -1.4
           },
           {
-            "name": "vxn",
-            "contribution": -1.98
-          },
-          {
-            "name": "qqq_return_momentum_4w",
-            "contribution": -1.87
+            "name": "cot_nasdaq_asset_mgr",
+            "contribution": -1.28
           },
           {
             "name": "hy_oas",
-            "contribution": -1.86
+            "contribution": -1.25
           }
         ]
       },
       "daily": {
-        "asOf": "2026-11-12",
-        "computedAt": "2026-11-12 07:37:58.230921",
-        "score": -2.2,
+        "asOf": "2026-11-13",
+        "computedAt": "2026-11-13 00:08:00.167775",
+        "score": -6.5,
         "regime": "Neutral",
         "prevScore": -0.6,
-        "scoreChange": -1.7,
+        "scoreChange": -6.0,
         "prevRegime": "Neutral",
         "dataCoverage": 0.864,
         "frameworkVersion": 1,
         "categories": [
           {
+            "key": "usd",
+            "weight": 0.1212,
+            "rawScore": -49.4,
+            "contribution": -5.99
+          },
+          {
             "key": "rates",
             "weight": 0.1818,
-            "rawScore": 35.0,
-            "contribution": 6.36
+            "rawScore": 24.7,
+            "contribution": 4.49
           },
           {
             "key": "risk",
             "weight": 0.1212,
-            "rawScore": -25.7,
-            "contribution": -3.12
+            "rawScore": -24.1,
+            "contribution": -2.92
           },
           {
-            "key": "usd",
+            "key": "options",
             "weight": 0.1212,
-            "rawScore": -24.5,
-            "contribution": -2.97
+            "rawScore": -11.6,
+            "contribution": -1.4
           },
           {
             "key": "breadth",
             "weight": 0.0909,
-            "rawScore": 21.1,
-            "contribution": 1.92
-          },
-          {
-            "key": "flows",
-            "weight": 0.1212,
-            "rawScore": -15.5,
-            "contribution": -1.87
+            "rawScore": 12.2,
+            "contribution": 1.11
           },
           {
             "key": "positioning",
@@ -672,52 +672,52 @@
             "contribution": -1.11
           },
           {
-            "key": "options",
+            "key": "flows",
             "weight": 0.1212,
-            "rawScore": -6.0,
-            "contribution": -0.73
+            "rawScore": -9.0,
+            "contribution": -1.09
           },
           {
             "key": "liquidity",
             "weight": 0.1212,
-            "rawScore": -5.9,
-            "contribution": -0.71
+            "rawScore": 3.3,
+            "contribution": 0.4
           }
         ],
         "topPositive": [
           {
-            "name": "us_10y_real_yield",
-            "contribution": 2.29
-          },
-          {
             "name": "us_10y_nominal_yield",
-            "contribution": 2.26
+            "contribution": 1.73
           },
           {
-            "name": "us_5y_real_yield",
-            "contribution": 1.3
+            "name": "us_10y_real_yield",
+            "contribution": 1.5
           },
           {
             "name": "pct_above_200ma",
-            "contribution": 1.15
+            "contribution": 1.05
           },
           {
-            "name": "mcclellan_oscillator",
-            "contribution": 0.77
+            "name": "us_5y_real_yield",
+            "contribution": 0.86
+          },
+          {
+            "name": "net_liquidity_zscore",
+            "contribution": 0.52
           }
         ],
         "topNegative": [
           {
             "name": "usd_directional_pressure",
-            "contribution": -2.97
+            "contribution": -5.99
           },
           {
             "name": "hy_oas",
-            "contribution": -1.65
+            "contribution": -1.5
           },
           {
-            "name": "qqq_return_momentum_4w",
-            "contribution": -1.53
+            "name": "qqq_gex",
+            "contribution": -1.4
           },
           {
             "name": "cot_nasdaq_asset_mgr",
@@ -725,39 +725,39 @@
           },
           {
             "name": "vxn",
-            "contribution": -1.1
+            "contribution": -0.99
           }
         ]
       },
       "divergence": {
         "status": "ALIGNED",
-        "weeklyScore": -4.9,
-        "dailyScore": -2.2,
+        "weeklyScore": -10.9,
+        "dailyScore": -6.5,
         "rule": "DIVERGENCE when weekly and daily scores have opposite signs"
       },
       "gamma": {
         "underlying": "QQQ",
         "source": "mbp_engine",
-        "asOf": "2026-11-10",
-        "spot": 674.76,
-        "putWall": 675.0,
-        "callWall": 700.0,
-        "gammaFlip": 679.32,
-        "netGex": -167298376.0,
+        "asOf": "2026-11-12",
+        "spot": 688.17,
+        "putWall": 650.0,
+        "callWall": 710.0,
+        "gammaFlip": 691.16,
+        "netGex": -382181362.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "NDX",
-          "spot": 27740.79,
-          "ratio": 41.1121,
+          "spot": 28289.19,
+          "ratio": 41.1078,
           "unit": "pts",
-          "putWall": 27750.7,
-          "callWall": 28778.5,
-          "gammaFlip": 27928.3
+          "putWall": 26720.1,
+          "callWall": 29186.6,
+          "gammaFlip": 28412.1
         },
-        "expiration": "2026-11-11",
-        "maxPain": 675.0,
-        "expectedMove": 7.89,
-        "putCallOiRatio": 1.479
+        "expiration": "2026-11-13",
+        "maxPain": 685.0,
+        "expectedMove": 9.11,
+        "putCallOiRatio": 1.246
       }
     }
   }
