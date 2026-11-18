@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-17T15:24:19+07:00",
+  "generatedAt": "2026-11-18T07:05:47+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -136,13 +136,13 @@
         ]
       },
       "daily": {
-        "asOf": "2026-11-17",
-        "computedAt": "2026-11-17 00:07:06.555106",
+        "asOf": "2026-11-18",
+        "computedAt": "2026-11-18 00:05:41.520641",
         "score": -17.4,
         "regime": "Strong Bearish",
-        "prevScore": -12.6,
-        "scoreChange": -4.8,
-        "prevRegime": "Bearish",
+        "prevScore": -17.4,
+        "scoreChange": 0.0,
+        "prevRegime": "Strong Bearish",
         "dataCoverage": 0.905,
         "frameworkVersion": 1,
         "categories": [
@@ -382,13 +382,13 @@
         ]
       },
       "daily": {
-        "asOf": "2026-11-17",
-        "computedAt": "2026-11-17 00:07:06.550410",
+        "asOf": "2026-11-18",
+        "computedAt": "2026-11-18 00:05:41.511236",
         "score": -11.1,
         "regime": "Bearish",
-        "prevScore": -4.9,
-        "scoreChange": -6.2,
-        "prevRegime": "Neutral",
+        "prevScore": -11.1,
+        "scoreChange": 0.0,
+        "prevRegime": "Bearish",
         "dataCoverage": 0.889,
         "frameworkVersion": 1,
         "categories": [
@@ -495,26 +495,26 @@
       "gamma": {
         "underlying": "SPY",
         "source": "mbp_engine",
-        "asOf": "2026-11-16",
-        "spot": 739.95,
-        "putWall": 750.0,
+        "asOf": "2026-11-17",
+        "spot": 732.44,
+        "putWall": 718.0,
         "callWall": 760.0,
-        "gammaFlip": 749.7,
-        "netGex": -402953715.0,
+        "gammaFlip": 745.05,
+        "netGex": -780822062.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "SPX",
           "spot": 7416.59,
-          "ratio": 10.0231,
+          "ratio": 10.1259,
           "unit": "pts",
-          "putWall": 7517.3,
-          "callWall": 7617.6,
-          "gammaFlip": 7514.3
+          "putWall": 7270.4,
+          "callWall": 7695.7,
+          "gammaFlip": 7544.3
         },
-        "expiration": "2026-11-17",
-        "maxPain": 753.0,
-        "expectedMove": 7.59,
-        "putCallOiRatio": 0.993
+        "expiration": "2026-11-18",
+        "maxPain": 748.0,
+        "expectedMove": 9.23,
+        "putCallOiRatio": 1.195
       }
     },
     "NASDAQ": {
@@ -625,13 +625,13 @@
         ]
       },
       "daily": {
-        "asOf": "2026-11-17",
-        "computedAt": "2026-11-17 00:07:06.553082",
+        "asOf": "2026-11-18",
+        "computedAt": "2026-11-18 00:05:41.518092",
         "score": -13.2,
         "regime": "Bearish",
-        "prevScore": -5.4,
-        "scoreChange": -7.8,
-        "prevRegime": "Neutral",
+        "prevScore": -13.2,
+        "scoreChange": 0.0,
+        "prevRegime": "Bearish",
         "dataCoverage": 0.864,
         "frameworkVersion": 1,
         "categories": [
@@ -738,26 +738,26 @@
       "gamma": {
         "underlying": "QQQ",
         "source": "mbp_engine",
-        "asOf": "2026-11-16",
-        "spot": 661.75,
-        "putWall": 680.0,
-        "callWall": 707.0,
-        "gammaFlip": 679.46,
-        "netGex": -268263578.0,
+        "asOf": "2026-11-17",
+        "spot": 656.95,
+        "putWall": 620.0,
+        "callWall": 700.0,
+        "gammaFlip": 672.13,
+        "netGex": -313887594.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "NDX",
           "spot": 27197.15,
-          "ratio": 41.0988,
+          "ratio": 41.3991,
           "unit": "pts",
-          "putWall": 27947.2,
-          "callWall": 29056.9,
-          "gammaFlip": 27925.0
+          "putWall": 25667.5,
+          "callWall": 28979.4,
+          "gammaFlip": 27825.6
         },
-        "expiration": "2026-11-17",
-        "maxPain": 680.0,
-        "expectedMove": 10.94,
-        "putCallOiRatio": 1.446
+        "expiration": "2026-11-18",
+        "maxPain": 671.0,
+        "expectedMove": 12.38,
+        "putCallOiRatio": 1.712
       }
     }
   }
