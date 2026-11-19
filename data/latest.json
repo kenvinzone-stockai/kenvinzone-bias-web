@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-19T11:11:04+07:00",
+  "generatedAt": "2026-11-19T14:08:44+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -500,7 +500,7 @@
         "putWall": 707.0,
         "callWall": 748.0,
         "gammaFlip": 734.27,
-        "netGex": -282165923.0,
+        "netGex": -282171600.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "SPX",
@@ -743,7 +743,7 @@
         "putWall": 585.0,
         "callWall": 705.0,
         "gammaFlip": 666.48,
-        "netGex": -98467064.0,
+        "netGex": -98477418.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "NDX",
