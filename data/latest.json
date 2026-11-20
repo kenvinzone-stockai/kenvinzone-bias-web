@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-20T10:59:01+07:00",
+  "generatedAt": "2026-11-20T13:58:32+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -26,7 +26,7 @@
       "label": "Gold (XAUUSD)",
       "weekly": {
         "asOf": "2026-11-20",
-        "computedAt": "2026-11-20 03:58:57.411419",
+        "computedAt": "2026-11-20 06:58:29.427760",
         "score": -19.0,
         "regime": "Strong Bearish",
         "prevScore": -12.9,
@@ -137,7 +137,7 @@
       },
       "daily": {
         "asOf": "2026-11-20",
-        "computedAt": "2026-11-20 03:58:56.837149",
+        "computedAt": "2026-11-20 06:58:28.589554",
         "score": -17.5,
         "regime": "Strong Bearish",
         "prevScore": -17.0,
@@ -278,7 +278,7 @@
       "label": "S&P 500",
       "weekly": {
         "asOf": "2026-11-20",
-        "computedAt": "2026-11-20 03:58:57.407564",
+        "computedAt": "2026-11-20 06:58:29.422939",
         "score": -14.3,
         "regime": "Bearish",
         "prevScore": -2.9,
@@ -383,7 +383,7 @@
       },
       "daily": {
         "asOf": "2026-11-20",
-        "computedAt": "2026-11-20 03:58:56.833048",
+        "computedAt": "2026-11-20 06:58:28.584592",
         "score": -15.1,
         "regime": "Strong Bearish",
         "prevScore": -14.4,
@@ -495,33 +495,33 @@
       "gamma": {
         "underlying": "SPY",
         "source": "mbp_engine",
-        "asOf": "2026-11-19",
-        "spot": 715.87,
-        "putWall": 620.0,
-        "callWall": 800.0,
-        "gammaFlip": 739.64,
-        "netGex": -8084799466.0,
+        "asOf": "2026-11-18",
+        "spot": 730.2,
+        "putWall": 707.0,
+        "callWall": 748.0,
+        "gammaFlip": 734.27,
+        "netGex": -282171600.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "SPX",
           "spot": 7323.63,
-          "ratio": 10.2304,
+          "ratio": 10.0296,
           "unit": "pts",
-          "putWall": 6342.8,
-          "callWall": 8184.3,
-          "gammaFlip": 7566.8
+          "putWall": 7090.9,
+          "callWall": 7502.2,
+          "gammaFlip": 7364.5
         },
-        "expiration": "2026-11-20",
-        "maxPain": 745.0,
-        "expectedMove": 10.15,
-        "putCallOiRatio": 2.752
+        "expiration": "2026-11-19",
+        "maxPain": 740.0,
+        "expectedMove": 8.27,
+        "putCallOiRatio": 1.356
       }
     },
     "NASDAQ": {
       "label": "Nasdaq 100",
       "weekly": {
         "asOf": "2026-11-20",
-        "computedAt": "2026-11-20 03:58:57.409775",
+        "computedAt": "2026-11-20 06:58:29.425583",
         "score": -21.0,
         "regime": "Strong Bearish",
         "prevScore": -10.9,
@@ -626,7 +626,7 @@
       },
       "daily": {
         "asOf": "2026-11-20",
-        "computedAt": "2026-11-20 03:58:56.835467",
+        "computedAt": "2026-11-20 06:58:28.587343",
         "score": -13.7,
         "regime": "Bearish",
         "prevScore": -13.1,
@@ -738,26 +738,26 @@
       "gamma": {
         "underlying": "QQQ",
         "source": "mbp_engine",
-        "asOf": "2026-11-19",
-        "spot": 645.04,
-        "putWall": 680.0,
-        "callWall": 720.0,
-        "gammaFlip": 665.2,
-        "netGex": -2578674736.0,
+        "asOf": "2026-11-18",
+        "spot": 659.51,
+        "putWall": 585.0,
+        "callWall": 705.0,
+        "gammaFlip": 666.48,
+        "netGex": -98477418.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "NDX",
           "spot": 27116.26,
-          "ratio": 42.0381,
+          "ratio": 41.1158,
           "unit": "pts",
-          "putWall": 28585.9,
-          "callWall": 30267.4,
-          "gammaFlip": 27963.7
+          "putWall": 24052.7,
+          "callWall": 28986.6,
+          "gammaFlip": 27402.8
         },
-        "expiration": "2026-11-20",
-        "maxPain": 680.0,
-        "expectedMove": 13.68,
-        "putCallOiRatio": 0.872
+        "expiration": "2026-11-19",
+        "maxPain": 666.0,
+        "expectedMove": 12.01,
+        "putCallOiRatio": 1.24
       }
     }
   }
