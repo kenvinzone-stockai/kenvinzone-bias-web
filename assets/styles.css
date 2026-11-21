@@ -615,3 +615,87 @@ em { font-style: normal; color: var(--text); font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+
+/* ============================================================================
+   KENVINZONE ECOSYSTEM DOCK + MOTION GRAPHIC & SCROLL CRAFT LAYER (v5)
+   ============================================================================ */
+.kz-scroll-beam-track {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 120; pointer-events: none;
+}
+.kz-scroll-beam {
+  height: 100%; width: 100%;
+  transform-origin: left center; transform: scaleX(0);
+  background: linear-gradient(90deg, #38bdf8 0%, #22c55e 50%, #f5c451 100%);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.75);
+  will-change: transform;
+}
+
+.topbar::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.55) 30%, rgba(245, 196, 81, 0.5) 70%, transparent);
+  pointer-events: none;
+}
+
+.eco-dock {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px; border-radius: 12px;
+  background: var(--inset); border: 1px solid var(--line);
+}
+.eco-tab {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 11px; border-radius: 8px;
+  font-size: 12.5px; font-weight: 700; color: var(--muted);
+  text-decoration: none; white-space: nowrap; transition: all 0.18s ease;
+}
+.eco-tab:hover { color: var(--text); background: var(--panel-2); }
+.eco-tab.active {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(56, 189, 248, 0.16));
+  color: var(--cyan); border: 1px solid rgba(56, 189, 248, 0.42);
+  box-shadow: 0 0 16px -6px rgba(56, 189, 248, 0.55);
+}
+.eco-tab.gold { color: var(--gold); }
+.eco-tab.gold:hover { background: rgba(245, 196, 81, 0.12); }
+
+.mobile-eco-strip {
+  display: none; overflow-x: auto; gap: 8px; padding: 8px 14px;
+  background: var(--inset); border-bottom: 1px solid var(--line);
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.mobile-eco-strip::-webkit-scrollbar { display: none; }
+.mobile-eco-strip .eco-tab {
+  background: var(--panel); border: 1px solid var(--line);
+  padding: 6px 11px; font-size: 12px; flex-shrink: 0;
+}
+
+@media (max-width: 1120px) {
+  .eco-dock { display: none; }
+  .mobile-eco-strip { display: flex; }
+}
+
+/* Gauge Hero Ambient Canvas */
+.zone-gauge { position: relative; isolation: isolate; overflow: hidden; }
+#kzBiasCanvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: -1; opacity: 0.85;
+}
+
+/* Tactile Surface Spotlight + CTA Sheen */
+.card, .tier {
+  position: relative; overflow: hidden; isolation: isolate;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease, box-shadow 0.22s ease;
+}
+.card::before, .tier::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  opacity: 0; transition: opacity 0.28s ease; z-index: -1;
+  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), rgba(56, 189, 248, 0.12), transparent 62%);
+}
+.card:hover::before, .tier:hover::before { opacity: 1; }
+
+.btn.primary { position: relative; overflow: hidden; }
+.btn.primary::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: -65%; width: 42%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  transform: skewX(-20deg); transition: left 0.55s ease; pointer-events: none;
+}
+.btn.primary:hover::after { left: 135%; }

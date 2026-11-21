@@ -14,13 +14,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css?v=20261027-v4">
+  <link rel="stylesheet" href="assets/styles.css?v=20261121-v5">
   <script>
-    (function(){try{var s=localStorage.getItem("kz-theme");if(s){document.documentElement.setAttribute("data-theme",s);}}catch(_){}})();
+    (function(){try{var m=document.cookie.match(/(?:^|; )kz-theme=(light|dark)/);var s=m?m[1]:localStorage.getItem("kz-theme");if(s){document.documentElement.setAttribute("data-theme",s);}}catch(_){}})();
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="assets/app.js?v=20261027-v4" defer></script>
+  <script src="assets/motion.js?v=20261121-v5" defer></script>
 </head>
 <body>
+  <!-- Scroll Telemetry Progress Beam -->
+  <div class="kz-scroll-beam-track" aria-hidden="true">
+    <div class="kz-scroll-beam" id="kzScrollBeam"></div>
+  </div>
+
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="https://kenvinzone.com" target="_blank" rel="noopener">
@@ -30,6 +38,16 @@
           <div class="brand-sub">MARKET BIAS TERMINAL</div>
         </div>
       </a>
+
+      <!-- Unified KenvinZone Ecosystem Switcher Dock (Desktop) -->
+      <nav class="eco-dock" aria-label="Hệ sinh thái KenvinZone">
+        <a href="https://kenvinzone.com/" target="_blank" rel="noopener noreferrer" class="eco-tab">🏠 Trang chủ</a>
+        <a href="https://aurora.kenvinzone.com/" target="_blank" rel="noopener noreferrer" class="eco-tab">⚡ Aurora V12.2</a>
+        <a href="https://kenvinzone-stockai.github.io/kenvinzone-reports/" target="_blank" rel="noopener noreferrer" class="eco-tab">📊 Báo cáo 4H</a>
+        <a href="index.html" class="eco-tab active" aria-current="page">🧭 Daily Bias</a>
+        <a href="https://prop.kenvinzone.com/" target="_blank" rel="noopener noreferrer" class="eco-tab gold">🏆 Prop Hub</a>
+      </nav>
+
       <div class="topbar-right">
         <div class="status" id="status">
           <span class="pulse" aria-hidden="true"></span>
@@ -43,12 +61,22 @@
     </div>
   </header>
 
+  <!-- Mobile / Tablet Scrollable Ecosystem Dock -->
+  <nav class="mobile-eco-strip" aria-label="Hệ sinh thái KenvinZone (Mobile)">
+    <a href="index.html" class="eco-tab active">🧭 Daily Bias</a>
+    <a href="https://kenvinzone-stockai.github.io/kenvinzone-reports/" target="_blank" rel="noopener noreferrer" class="eco-tab">📊 Báo cáo 4H</a>
+    <a href="https://aurora.kenvinzone.com/" target="_blank" rel="noopener noreferrer" class="eco-tab">⚡ Aurora V12.2</a>
+    <a href="https://prop.kenvinzone.com/" target="_blank" rel="noopener noreferrer" class="eco-tab gold">🏆 Prop Hub</a>
+    <a href="https://kenvinzone.com/" target="_blank" rel="noopener noreferrer" class="eco-tab">🏠 KenvinZone</a>
+  </nav>
+
   <div class="shell">
     <nav class="asset-tabs" role="tablist" aria-label="Chọn tài sản" id="asset-tabs"></nav>
 
     <main class="grid">
       <!-- ZONE 1 — Bias gauge & regime -->
       <section class="card hero zone-gauge" aria-labelledby="z1-title">
+        <canvas id="kzBiasCanvas" aria-hidden="true"></canvas>
         <div class="card-head">
           <h2 id="z1-title">01 · Market Bias <span class="h-sub">· <span id="tf-label">Tuần</span></span></h2>
           <div class="seg" role="tablist" aria-label="Khung thời gian">
