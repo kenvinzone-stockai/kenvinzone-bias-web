@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-23T14:22:19+07:00",
+  "generatedAt": "2026-11-23T15:07:51+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -26,8 +26,8 @@
       "label": "Gold (XAUUSD)",
       "weekly": {
         "asOf": "2026-11-23",
-        "computedAt": "2026-11-23 07:22:15.906515",
-        "score": -14.7,
+        "computedAt": "2026-11-23 08:07:48.214952",
+        "score": -14.6,
         "regime": "Bearish",
         "prevScore": -12.9,
         "scoreChange": -1.8,
@@ -38,14 +38,14 @@
           {
             "key": "usd",
             "weight": 0.1778,
-            "rawScore": -58.5,
-            "contribution": -10.4
+            "rawScore": -58.2,
+            "contribution": -10.35
           },
           {
             "key": "flows",
             "weight": 0.1333,
             "rawScore": -43.5,
-            "contribution": -5.79
+            "contribution": -5.8
           },
           {
             "key": "rates",
@@ -74,8 +74,8 @@
           {
             "key": "gold_specific",
             "weight": 0.1333,
-            "rawScore": 1.8,
-            "contribution": 0.24
+            "rawScore": 1.9,
+            "contribution": 0.25
           },
           {
             "key": "positioning",
@@ -115,7 +115,7 @@
         "topNegative": [
           {
             "name": "usd_directional_pressure",
-            "contribution": -10.4
+            "contribution": -10.35
           },
           {
             "name": "us_10y_real_yield",
@@ -131,17 +131,17 @@
           },
           {
             "name": "gold_futures_momentum",
-            "contribution": -1.44
+            "contribution": -1.45
           }
         ]
       },
       "daily": {
         "asOf": "2026-11-23",
-        "computedAt": "2026-11-23 07:22:15.066064",
+        "computedAt": "2026-11-23 08:07:47.456538",
         "score": -13.5,
         "regime": "Bearish",
         "prevScore": -14.1,
-        "scoreChange": 0.5,
+        "scoreChange": 0.6,
         "prevRegime": "Bearish",
         "dataCoverage": 0.857,
         "frameworkVersion": 1,
@@ -149,8 +149,8 @@
           {
             "key": "usd",
             "weight": 0.1778,
-            "rawScore": -57.9,
-            "contribution": -10.3
+            "rawScore": -57.7,
+            "contribution": -10.25
           },
           {
             "key": "flows",
@@ -192,7 +192,7 @@
             "key": "gold_specific",
             "weight": 0.1333,
             "rawScore": -2.3,
-            "contribution": -0.31
+            "contribution": -0.3
           },
           {
             "key": "options",
@@ -226,7 +226,7 @@
         "topNegative": [
           {
             "name": "usd_directional_pressure",
-            "contribution": -10.3
+            "contribution": -10.25
           },
           {
             "name": "cot_gold_trend",
@@ -238,7 +238,7 @@
           },
           {
             "name": "gold_futures_momentum",
-            "contribution": -1.52
+            "contribution": -1.53
           },
           {
             "name": "gld_return_momentum_4w",
@@ -248,7 +248,7 @@
       },
       "divergence": {
         "status": "ALIGNED",
-        "weeklyScore": -14.7,
+        "weeklyScore": -14.6,
         "dailyScore": -13.5,
         "rule": "DIVERGENCE when weekly and daily scores have opposite signs"
       },
@@ -278,8 +278,8 @@
       "label": "S&P 500",
       "weekly": {
         "asOf": "2026-11-23",
-        "computedAt": "2026-11-23 07:22:15.901738",
-        "score": -24.6,
+        "computedAt": "2026-11-23 08:07:48.207718",
+        "score": -24.5,
         "regime": "Strong Bearish",
         "prevScore": -2.9,
         "scoreChange": -21.7,
@@ -290,14 +290,14 @@
           {
             "key": "risk",
             "weight": 0.125,
-            "rawScore": -44.9,
-            "contribution": -5.61
+            "rawScore": -44.8,
+            "contribution": -5.6
           },
           {
             "key": "usd",
             "weight": 0.125,
-            "rawScore": -40.2,
-            "contribution": -5.03
+            "rawScore": -40.0,
+            "contribution": -5.0
           },
           {
             "key": "positioning",
@@ -361,7 +361,7 @@
         "topNegative": [
           {
             "name": "usd_directional_pressure",
-            "contribution": -5.03
+            "contribution": -5.0
           },
           {
             "name": "cot_spx_leveraged",
@@ -383,8 +383,8 @@
       },
       "daily": {
         "asOf": "2026-11-23",
-        "computedAt": "2026-11-23 07:22:15.059790",
-        "score": -21.4,
+        "computedAt": "2026-11-23 08:07:47.450686",
+        "score": -21.3,
         "regime": "Strong Bearish",
         "prevScore": -20.4,
         "scoreChange": -0.9,
@@ -395,14 +395,14 @@
           {
             "key": "risk",
             "weight": 0.125,
-            "rawScore": -49.1,
-            "contribution": -6.14
+            "rawScore": -49.0,
+            "contribution": -6.12
           },
           {
             "key": "usd",
             "weight": 0.125,
-            "rawScore": -39.8,
-            "contribution": -4.98
+            "rawScore": -39.6,
+            "contribution": -4.95
           },
           {
             "key": "breadth",
@@ -466,7 +466,7 @@
         "topNegative": [
           {
             "name": "usd_directional_pressure",
-            "contribution": -4.98
+            "contribution": -4.95
           },
           {
             "name": "mcclellan_oscillator",
@@ -488,8 +488,8 @@
       },
       "divergence": {
         "status": "ALIGNED",
-        "weeklyScore": -24.6,
-        "dailyScore": -21.4,
+        "weeklyScore": -24.5,
+        "dailyScore": -21.3,
         "rule": "DIVERGENCE when weekly and daily scores have opposite signs"
       },
       "gamma": {
@@ -521,8 +521,8 @@
       "label": "Nasdaq 100",
       "weekly": {
         "asOf": "2026-11-23",
-        "computedAt": "2026-11-23 07:22:15.904242",
-        "score": -23.0,
+        "computedAt": "2026-11-23 08:07:48.211649",
+        "score": -22.9,
         "regime": "Strong Bearish",
         "prevScore": -10.9,
         "scoreChange": -12.0,
@@ -533,14 +533,14 @@
           {
             "key": "usd",
             "weight": 0.1212,
-            "rawScore": -45.7,
-            "contribution": -5.54
+            "rawScore": -45.5,
+            "contribution": -5.51
           },
           {
             "key": "risk",
             "weight": 0.1212,
-            "rawScore": -34.8,
-            "contribution": -4.21
+            "rawScore": -34.5,
+            "contribution": -4.19
           },
           {
             "key": "flows",
@@ -604,7 +604,7 @@
         "topNegative": [
           {
             "name": "usd_directional_pressure",
-            "contribution": -5.54
+            "contribution": -5.51
           },
           {
             "name": "mcclellan_oscillator",
@@ -626,7 +626,7 @@
       },
       "daily": {
         "asOf": "2026-11-23",
-        "computedAt": "2026-11-23 07:22:15.063342",
+        "computedAt": "2026-11-23 08:07:47.454052",
         "score": -17.0,
         "regime": "Strong Bearish",
         "prevScore": -18.6,
@@ -638,14 +638,14 @@
           {
             "key": "usd",
             "weight": 0.1212,
-            "rawScore": -45.3,
-            "contribution": -5.49
+            "rawScore": -45.0,
+            "contribution": -5.46
           },
           {
             "key": "risk",
             "weight": 0.1212,
-            "rawScore": -36.8,
-            "contribution": -4.46
+            "rawScore": -36.6,
+            "contribution": -4.44
           },
           {
             "key": "flows",
@@ -709,7 +709,7 @@
         "topNegative": [
           {
             "name": "usd_directional_pressure",
-            "contribution": -5.49
+            "contribution": -5.46
           },
           {
             "name": "mcclellan_oscillator",
@@ -731,7 +731,7 @@
       },
       "divergence": {
         "status": "ALIGNED",
-        "weeklyScore": -23.0,
+        "weeklyScore": -22.9,
         "dailyScore": -17.0,
         "rule": "DIVERGENCE when weekly and daily scores have opposite signs"
       },
