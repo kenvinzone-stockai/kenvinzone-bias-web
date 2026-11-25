@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-25T15:13:40+07:00",
+  "generatedAt": "2026-11-25T16:02:13+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -137,7 +137,7 @@
       },
       "daily": {
         "asOf": "2026-11-25",
-        "computedAt": "2026-11-25 08:13:36.200480",
+        "computedAt": "2026-11-25 09:02:09.627358",
         "score": -18.3,
         "regime": "Strong Bearish",
         "prevScore": -16.2,
@@ -383,7 +383,7 @@
       },
       "daily": {
         "asOf": "2026-11-25",
-        "computedAt": "2026-11-25 08:13:36.195362",
+        "computedAt": "2026-11-25 09:02:09.622771",
         "score": -11.9,
         "regime": "Bearish",
         "prevScore": -11.0,
@@ -626,7 +626,7 @@
       },
       "daily": {
         "asOf": "2026-11-25",
-        "computedAt": "2026-11-25 08:13:36.198340",
+        "computedAt": "2026-11-25 09:02:09.625209",
         "score": -11.3,
         "regime": "Bearish",
         "prevScore": -9.7,
