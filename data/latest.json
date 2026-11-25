@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-25T07:05:53+07:00",
+  "generatedAt": "2026-11-25T12:26:17+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -137,7 +137,7 @@
       },
       "daily": {
         "asOf": "2026-11-25",
-        "computedAt": "2026-11-25 00:05:47.143929",
+        "computedAt": "2026-11-25 05:26:11.412112",
         "score": -18.3,
         "regime": "Strong Bearish",
         "prevScore": -16.2,
@@ -383,7 +383,7 @@
       },
       "daily": {
         "asOf": "2026-11-25",
-        "computedAt": "2026-11-25 00:05:47.137846",
+        "computedAt": "2026-11-25 05:26:11.405646",
         "score": -11.9,
         "regime": "Bearish",
         "prevScore": -11.0,
@@ -499,8 +499,8 @@
         "spot": 718.78,
         "putWall": 734.0,
         "callWall": 730.0,
-        "gammaFlip": 715.14,
-        "netGex": 209709905.0,
+        "gammaFlip": 715.15,
+        "netGex": 209326938.0,
         "gammaRegime": "positive",
         "spotAsset": {
           "symbol": "SPX",
@@ -509,12 +509,12 @@
           "unit": "pts",
           "putWall": 7390.4,
           "callWall": 7350.1,
-          "gammaFlip": 7200.5
+          "gammaFlip": 7200.6
         },
         "expiration": "2026-11-25",
         "maxPain": 717.0,
         "expectedMove": 8.21,
-        "putCallOiRatio": 0.651
+        "putCallOiRatio": 0.663
       }
     },
     "NASDAQ": {
@@ -626,7 +626,7 @@
       },
       "daily": {
         "asOf": "2026-11-25",
-        "computedAt": "2026-11-25 00:05:47.141686",
+        "computedAt": "2026-11-25 05:26:11.409328",
         "score": -11.3,
         "regime": "Bearish",
         "prevScore": -9.7,
@@ -742,8 +742,8 @@
         "spot": 638.1,
         "putWall": 605.0,
         "callWall": 725.0,
-        "gammaFlip": 638.56,
-        "netGex": -9372797.0,
+        "gammaFlip": 638.57,
+        "netGex": -9459724.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "NDX",
@@ -752,12 +752,12 @@
           "unit": "pts",
           "putWall": 25358.7,
           "callWall": 30388.5,
-          "gammaFlip": 26765.4
+          "gammaFlip": 26765.8
         },
         "expiration": "2026-11-25",
         "maxPain": 642.0,
         "expectedMove": 11.11,
-        "putCallOiRatio": 0.986
+        "putCallOiRatio": 0.996
       }
     }
   }
