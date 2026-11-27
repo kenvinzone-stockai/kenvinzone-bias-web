@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-27T12:01:59+07:00",
+  "generatedAt": "2026-11-27T15:04:23+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -26,7 +26,7 @@
       "label": "Gold (XAUUSD)",
       "weekly": {
         "asOf": "2026-11-27",
-        "computedAt": "2026-11-27 05:01:55.216082",
+        "computedAt": "2026-11-27 08:04:20.758473",
         "score": -15.2,
         "regime": "Strong Bearish",
         "prevScore": -12.9,
@@ -137,7 +137,7 @@
       },
       "daily": {
         "asOf": "2026-11-27",
-        "computedAt": "2026-11-27 05:01:54.570552",
+        "computedAt": "2026-11-27 08:04:20.118033",
         "score": -16.7,
         "regime": "Strong Bearish",
         "prevScore": -16.7,
@@ -278,7 +278,7 @@
       "label": "S&P 500",
       "weekly": {
         "asOf": "2026-11-27",
-        "computedAt": "2026-11-27 05:01:55.210657",
+        "computedAt": "2026-11-27 08:04:20.754648",
         "score": -15.5,
         "regime": "Strong Bearish",
         "prevScore": -2.9,
@@ -383,7 +383,7 @@
       },
       "daily": {
         "asOf": "2026-11-27",
-        "computedAt": "2026-11-27 05:01:54.395128",
+        "computedAt": "2026-11-27 08:04:20.111575",
         "score": -14.7,
         "regime": "Bearish",
         "prevScore": -14.7,
@@ -499,8 +499,8 @@
         "spot": 716.7,
         "putWall": 700.0,
         "callWall": 775.0,
-        "gammaFlip": 717.08,
-        "netGex": -36958952.0,
+        "gammaFlip": 718.72,
+        "netGex": -237843298.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "SPX",
@@ -509,7 +509,7 @@
           "unit": "pts",
           "putWall": 7015.4,
           "callWall": 7767.1,
-          "gammaFlip": 7186.6
+          "gammaFlip": 7203.0
         },
         "expiration": "2026-11-27",
         "maxPain": 721.0,
@@ -521,7 +521,7 @@
       "label": "Nasdaq 100",
       "weekly": {
         "asOf": "2026-11-27",
-        "computedAt": "2026-11-27 05:01:55.213828",
+        "computedAt": "2026-11-27 08:04:20.756677",
         "score": -13.9,
         "regime": "Bearish",
         "prevScore": -10.9,
@@ -626,7 +626,7 @@
       },
       "daily": {
         "asOf": "2026-11-27",
-        "computedAt": "2026-11-27 05:01:54.568148",
+        "computedAt": "2026-11-27 08:04:20.116231",
         "score": -13.1,
         "regime": "Bearish",
         "prevScore": -13.1,
@@ -738,26 +738,26 @@
       "gamma": {
         "underlying": "QQQ",
         "source": "mbp_engine",
-        "asOf": "2026-11-25",
-        "spot": 633.93,
-        "putWall": 550.0,
-        "callWall": 700.0,
-        "gammaFlip": 638.32,
-        "netGex": -121337211.0,
+        "asOf": "2026-11-23",
+        "spot": 651.03,
+        "putWall": 560.0,
+        "callWall": 685.0,
+        "gammaFlip": 656.18,
+        "netGex": -50252081.0,
         "gammaRegime": "negative",
         "spotAsset": {
           "symbol": "NDX",
           "spot": 26046.9,
-          "ratio": 41.088,
+          "ratio": 40.0087,
           "unit": "pts",
-          "putWall": 22598.4,
-          "callWall": 28761.6,
-          "gammaFlip": 26227.3
+          "putWall": 22404.9,
+          "callWall": 27406.0,
+          "gammaFlip": 26252.9
         },
-        "expiration": "2026-11-27",
-        "maxPain": 644.0,
-        "expectedMove": 13.33,
-        "putCallOiRatio": 0.905
+        "expiration": "2026-11-24",
+        "maxPain": 645.0,
+        "expectedMove": 12.37,
+        "putCallOiRatio": 1.617
       }
     }
   }
