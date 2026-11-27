@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-27T07:05:46+07:00",
+  "generatedAt": "2026-11-27T12:01:59+07:00",
   "frameworkVersion": 1,
   "scale": {
     "min": -100,
@@ -26,7 +26,7 @@
       "label": "Gold (XAUUSD)",
       "weekly": {
         "asOf": "2026-11-27",
-        "computedAt": "2026-11-27 00:05:41.394365",
+        "computedAt": "2026-11-27 05:01:55.216082",
         "score": -15.2,
         "regime": "Strong Bearish",
         "prevScore": -12.9,
@@ -137,7 +137,7 @@
       },
       "daily": {
         "asOf": "2026-11-27",
-        "computedAt": "2026-11-27 00:05:40.562935",
+        "computedAt": "2026-11-27 05:01:54.570552",
         "score": -16.7,
         "regime": "Strong Bearish",
         "prevScore": -16.7,
@@ -278,7 +278,7 @@
       "label": "S&P 500",
       "weekly": {
         "asOf": "2026-11-27",
-        "computedAt": "2026-11-27 00:05:41.389663",
+        "computedAt": "2026-11-27 05:01:55.210657",
         "score": -15.5,
         "regime": "Strong Bearish",
         "prevScore": -2.9,
@@ -383,7 +383,7 @@
       },
       "daily": {
         "asOf": "2026-11-27",
-        "computedAt": "2026-11-27 00:05:40.556196",
+        "computedAt": "2026-11-27 05:01:54.395128",
         "score": -14.7,
         "regime": "Bearish",
         "prevScore": -14.7,
@@ -521,7 +521,7 @@
       "label": "Nasdaq 100",
       "weekly": {
         "asOf": "2026-11-27",
-        "computedAt": "2026-11-27 00:05:41.392110",
+        "computedAt": "2026-11-27 05:01:55.213828",
         "score": -13.9,
         "regime": "Bearish",
         "prevScore": -10.9,
@@ -626,7 +626,7 @@
       },
       "daily": {
         "asOf": "2026-11-27",
-        "computedAt": "2026-11-27 00:05:40.560651",
+        "computedAt": "2026-11-27 05:01:54.568148",
         "score": -13.1,
         "regime": "Bearish",
         "prevScore": -13.1,
